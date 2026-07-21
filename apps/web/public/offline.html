@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#121212" />
+    <title>Offline — KUKUNET Digital</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #121212;
+        color: #fff;
+        font-family: system-ui, sans-serif;
+        padding: 1.5rem;
+      }
+      .card {
+        max-width: 22rem;
+        text-align: center;
+        background: #212121;
+        border: 1px solid #333;
+        border-radius: 1.5rem;
+        padding: 2rem;
+      }
+      h1 {
+        margin: 0 0 0.75rem;
+        font-size: 1.25rem;
+      }
+      p {
+        margin: 0;
+        color: #8e8e8e;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      button {
+        margin-top: 1.25rem;
+        background: #059669;
+        color: #fff;
+        border: none;
+        border-radius: 0.75rem;
+        padding: 0.75rem 1.25rem;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>You are offline</h1>
+      <p>KUKUNET Digital needs a network connection for sign-in and live dashboard data.</p>
+      <button type="button" onclick="window.location.reload()">Try again</button>
+    </div>
+  </body>
+</html>

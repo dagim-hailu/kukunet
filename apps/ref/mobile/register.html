@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kukunet Digital - Register</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #FFFFFF;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .bg-dashboard-dark { background-color: #212121; }
+    .bg-dashboard-card { background-color: #1A1A1A; }
+    .text-muted { color: #8E8E8E; }
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+    .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 bg-neutral-950">
+
+  <!-- REGISTER SCREEN CONTAINER -->
+  <div class="w-[360px] h-[740px] bg-dashboard-dark rounded-[40px] border border-neutral-800 p-6 flex flex-col justify-between shadow-2xl overflow-hidden relative">
+    
+    <!-- Top Bar Navigation -->
+    <div class="flex items-center justify-between mb-4 flex-shrink-0">
+      <a href="home.html" class="w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-neutral-700 transition">
+        <i data-lucide="chevron-left" class="w-5 h-5 text-neutral-300"></i>
+      </a>
+      <h1 class="text-base font-bold tracking-wide">Create Account</h1>
+      <div class="w-8"></div> <!-- Spacer to center title -->
+    </div>
+
+    <!-- Scrollable Form Container -->
+    <div class="flex-1 overflow-y-auto pr-1 scrollbar-none space-y-5 pb-4">
+      
+      <!-- Attractive Category Header -->
+      <div class="text-center">
+        <p class="text-xs text-neutral-400">Choose your personalized learning track</p>
+      </div>
+
+      <!-- Animated Category Selector -->
+      <div class="grid grid-cols-2 gap-4">
+        
+        <!-- Kids Category Option Card -->
+        <div id="cat-kids" onclick="selectCategory('kids')" class="relative bg-dashboard-card border-2 border-neutral-800/80 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 transform hover:scale-[1.03]">
+          <!-- Active Background Glow Decorator -->
+          <div id="glow-kids" class="absolute inset-0 bg-amber-500/5 opacity-0 rounded-2xl transition-opacity duration-300"></div>
+          <div id="icon-bg-kids" class="w-12 h-12 rounded-xl bg-neutral-800/80 flex items-center justify-center mb-3 transition-all duration-300">
+            <i data-lucide="smile" id="icon-kids" class="w-6 h-6 text-neutral-500 transition-colors duration-300"></i>
+          </div>
+          <h3 id="title-kids" class="text-xs font-bold text-neutral-400 transition-colors duration-300">Kids Program</h3>
+          <p class="text-[9px] text-muted mt-1 leading-tight">Gamified basics, ages 8-15</p>
+        </div>
+
+        <!-- Adult Category Option Card -->
+        <div id="cat-adult" onclick="selectCategory('adult')" class="relative bg-dashboard-card border-2 border-neutral-800/80 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 transform hover:scale-[1.03]">
+          <!-- Active Background Glow Decorator -->
+          <div id="glow-adult" class="absolute inset-0 bg-emerald-500/5 opacity-0 rounded-2xl transition-opacity duration-300"></div>
+          <div id="icon-bg-adult" class="w-12 h-12 rounded-xl bg-neutral-800/80 flex items-center justify-center mb-3 transition-all duration-300">
+            <i data-lucide="rocket" id="icon-adult" class="w-6 h-6 text-neutral-500 transition-colors duration-300"></i>
+          </div>
+          <h3 id="title-adult" class="text-xs font-bold text-neutral-400 transition-colors duration-300">Adult Track</h3>
+          <p class="text-[9px] text-muted mt-1 leading-tight">Professional tech skillsets</p>
+        </div>
+
+      </div>
+
+      <!-- Main Input Registration Fields -->
+      <form id="reg-form" onsubmit="handleRegistration(event)" class="space-y-3 pt-1">
+        <div>
+          <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-1.5 pl-1">Full Name</label>
+          <div class="flex items-center gap-3 bg-dashboard-card border border-neutral-800/80 rounded-xl px-4 py-3 focus-within:border-emerald-500 transition-all duration-300">
+            <i data-lucide="user" class="w-4 h-4 text-neutral-500"></i>
+            <input type="text" required placeholder="Enter full name" class="bg-transparent text-xs w-full outline-none text-neutral-200 placeholder-neutral-600">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-1.5 pl-1">Email Address</label>
+          <div class="flex items-center gap-3 bg-dashboard-card border border-neutral-800/80 rounded-xl px-4 py-3 focus-within:border-emerald-500 transition-all duration-300">
+            <i data-lucide="mail" class="w-4 h-4 text-neutral-500"></i>
+            <input type="email" required placeholder="name@example.com" class="bg-transparent text-xs w-full outline-none text-neutral-200 placeholder-neutral-600">
+          </div>
+        </div>
+
+        <!-- Custom Field that reacts based on selection -->
+        <div>
+          <label id="variable-label" class="block text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-1.5 pl-1">Age / Grade Level</label>
+          <div class="flex items-center gap-3 bg-dashboard-card border border-neutral-800/80 rounded-xl px-4 py-3 focus-within:border-emerald-500 transition-all duration-300">
+            <i data-lucide="calendar" class="w-4 h-4 text-neutral-500"></i>
+            <input type="text" id="variable-input" required placeholder="Specify details" class="bg-transparent text-xs w-full outline-none text-neutral-200 placeholder-neutral-600">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-1.5 pl-1">Password</label>
+          <div class="flex items-center gap-3 bg-dashboard-card border border-neutral-800/80 rounded-xl px-4 py-3 focus-within:border-emerald-500 transition-all duration-300">
+            <i data-lucide="lock" class="w-4 h-4 text-neutral-500"></i>
+            <input type="password" required placeholder="••••••••" class="bg-transparent text-xs w-full outline-none text-neutral-200 placeholder-neutral-600">
+          </div>
+        </div>
+
+        <!-- Agree to Terms Row -->
+        <div class="flex items-start gap-2.5 pt-1 pl-1">
+          <input type="checkbox" required class="accent-emerald-500 mt-0.5 rounded cursor-pointer">
+          <span class="text-[10px] text-neutral-400 leading-snug">I accept the Kukunet Digital Privacy Policy and terms of use.</span>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submit-btn" class="w-full bg-neutral-800 text-neutral-500 text-xs font-bold py-3.5 rounded-xl transition-all duration-300 mt-4 cursor-not-allowed" disabled>
+          Select a category first
+        </button>
+      </form>
+
+    </div>
+
+    <!-- Bottom Info Footer -->
+    <div class="text-center pt-3 border-t border-neutral-800/60 flex-shrink-0">
+      <p class="text-[11px] text-neutral-500">Already have an account? <a href="profile.html" class="text-emerald-500 font-semibold hover:underline">Log In</a></p>
+    </div>
+
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    let chosenCategory = null;
+
+    // Handles the animated swapping when tabs change
+    function selectCategory(type) {
+      chosenCategory = type;
+      
+      const kidsCard = document.getElementById('cat-kids');
+      const adultCard = document.getElementById('cat-adult');
+      const glowKids = document.getElementById('glow-kids');
+      const glowAdult = document.getElementById('glow-adult');
+      const iconKids = document.getElementById('icon-kids');
+      const iconAdult = document.getElementById('icon-adult');
+      const iconBgKids = document.getElementById('icon-bg-kids');
+      const iconBgAdult = document.getElementById('icon-bg-adult');
+      const titleKids = document.getElementById('title-kids');
+      const titleAdult = document.getElementById('title-adult');
+      
+      const variableLabel = document.getElementById('variable-label');
+      const variableInput = document.getElementById('variable-input');
+      const submitBtn = document.getElementById('submit-btn');
+
+      if (type === 'kids') {
+        // Activate Kids UI theme (Warm Amber/Yellow animations)
+        kidsCard.className = "relative bg-dashboard-card border-2 border-amber-500/80 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 transform scale-[1.04] shadow-lg shadow-amber-500/5";
+        glowKids.style.opacity = "1";
+        iconBgKids.className = "w-12 h-12 rounded-xl bg-amber-500 flex items-center justify-center mb-3 transition-all duration-300 shadow-md shadow-amber-500/20";
+        iconKids.setAttribute('class', 'w-6 h-6 text-neutral-950 font-bold');
+        titleKids.className = "text-xs font-bold text-amber-400";
+
+        // Reset Adult Card to plain dark states
+        adultCard.className = "relative bg-dashboard-card border-2 border-neutral-800/80 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 transform hover:scale-[1.03]";
+        glowAdult.style.opacity = "0";
+        iconBgAdult.className = "w-12 h-12 rounded-xl bg-neutral-800/80 flex items-center justify-center mb-3 transition-all duration-300";
+        iconAdult.setAttribute('class', 'w-6 h-6 text-neutral-500');
+        titleAdult.className = "text-xs font-bold text-neutral-400";
+
+        // Form Context Tweaks
+        variableLabel.innerText = "Child's Age / Grade Level";
+        variableInput.placeholder = "e.g., 11 years old / 6th Grade";
+        
+        // Transform the core submit btn theme
+        submitBtn.className = "w-full bg-amber-500 hover:bg-amber-400 text-neutral-950 text-xs font-bold py-3.5 rounded-xl shadow-lg shadow-amber-500/10 active:scale-95 transition-all duration-300 mt-4 cursor-pointer";
+        submitBtn.innerText = "Register for Kids Track";
+        submitBtn.removeAttribute('disabled');
+
+      } else if (type === 'adult') {
+        // Activate Adult UI theme (Sleek Emerald animations)
+        adultCard.className = "relative bg-dashboard-card border-2 border-emerald-500/80 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 transform scale-[1.04] shadow-lg shadow-emerald-500/5";
+        glowAdult.style.opacity = "1";
+        iconBgAdult.className = "w-12 h-12 rounded-xl bg-emerald-500 flex items-center justify-center mb-3 transition-all duration-300 shadow-md shadow-emerald-500/20";
+        iconAdult.setAttribute('class', 'w-6 h-6 text-neutral-950 font-bold');
+        titleAdult.className = "text-xs font-bold text-emerald-400";
+
+        // Reset Kids Card to plain dark states
+        kidsCard.className = "relative bg-dashboard-card border-2 border-neutral-800/80 rounded-2xl p-4 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 transform hover:scale-[1.03]";
+        glowKids.style.opacity = "0";
+        iconBgKids.className = "w-12 h-12 rounded-xl bg-neutral-800/80 flex items-center justify-center mb-3 transition-all duration-300";
+        iconKids.setAttribute('class', 'w-6 h-6 text-neutral-500');
+        titleKids.className = "text-xs font-bold text-neutral-400";
+
+        // Form Context Tweaks
+        variableLabel.innerText = "Current Occupation / Target Field";
+        variableInput.placeholder = "e.g., University Student / Web Designer";
+
+        // Transform the core submit btn theme
+        submitBtn.className = "w-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-3.5 rounded-xl shadow-lg shadow-emerald-600/10 active:scale-95 transition-all duration-300 mt-4 cursor-pointer";
+        submitBtn.innerText = "Register for Adult Track";
+        submitBtn.removeAttribute('disabled');
+      }
+
+      // Re-trigger icon updates to ensure crisp vector re-renders
+      lucide.createIcons();
+    }
+
+    function handleRegistration(event) {
+      event.preventDefault();
+      alert(`Success! Account created under the ${chosenCategory.toUpperCase()} pathway.`);
+      window.location.href = "home.html";
+    }
+  </script>
+</body>
+</html>

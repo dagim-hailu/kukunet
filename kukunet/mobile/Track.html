@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kukunet Digital - Track</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #FFFFFF;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .bg-dashboard-dark { background-color: #212121; }
+    .bg-dashboard-card { background-color: #1A1A1A; }
+    .text-muted { color: #8E8E8E; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 bg-neutral-950">
+
+  <!-- TRACK SCREEN CONTAINER -->
+  <div class="w-[360px] h-[740px] bg-dashboard-dark rounded-[40px] border border-neutral-800 p-6 flex flex-col justify-between shadow-2xl overflow-hidden relative">
+    <div>
+      <!-- Header -->
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <h1 class="text-2xl font-bold tracking-wide">Track</h1>
+          <p class="text-xs text-muted mt-1">Full stack track · 25% done</p>
+        </div>
+        <button class="p-1 hover:opacity-80 transition">
+          <i data-lucide="edit-3" class="w-5 h-5 text-neutral-400"></i>
+        </button>
+      </div>
+
+      <!-- Track Selector Tabs -->
+      <div class="flex gap-6 border-b border-neutral-800 mb-5 text-sm">
+        <button class="text-emerald-500 font-semibold border-b-2 border-emerald-500 pb-2">Core Tracks</button>
+        <button class="text-neutral-500 font-medium pb-2 hover:text-neutral-300 transition">Electives</button>
+      </div>
+
+      <!-- Action Quick-Cards -->
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="bg-emerald-950/30 border border-emerald-900/30 rounded-2xl p-4 flex flex-col justify-between h-32 cursor-pointer hover:bg-emerald-950/40 transition">
+          <div class="w-7 h-7 rounded-lg bg-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+            <i data-lucide="clipboard-check" class="w-4 h-4 text-neutral-900 font-bold"></i>
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-emerald-400">Quiz</h3>
+            <p class="text-[10px] text-emerald-600 font-medium mt-0.5">Test your skills</p>
+          </div>
+        </div>
+        <div class="bg-cyan-950/20 border border-cyan-900/20 rounded-2xl p-4 flex flex-col justify-between h-32 cursor-pointer hover:bg-cyan-950/30 transition">
+          <div class="w-7 h-7 rounded-lg bg-cyan-400 flex items-center justify-center shadow-lg shadow-cyan-400/20">
+            <i data-lucide="file-text" class="w-4 h-4 text-neutral-900 font-bold"></i>
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-cyan-400">Summarize</h3>
+            <p class="text-[10px] text-cyan-600 font-medium mt-0.5">Review notes</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Continuation Area header -->
+      <div class="mb-3">
+        <h2 class="text-sm font-semibold tracking-wide">Continue learning</h2>
+        <p class="text-[11px] text-muted mt-0.5">Your curated learning path</p>
+      </div>
+
+      <!-- List Stack showing the 4 updated courses -->
+      <div class="space-y-2.5 overflow-y-auto max-h-[250px] pr-1 scrollbar-none">
+        
+        <!-- Course 1: HTML, CSS, JS -->
+        <div class="flex items-center gap-3 bg-dashboard-card border border-neutral-800/40 rounded-xl p-3">
+          <div class="w-9 h-9 rounded-lg bg-emerald-950/40 border border-emerald-900/20 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="code-2" class="w-4 h-4 text-emerald-400"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h4 class="text-xs font-semibold truncate">HTML, CSS, JS</h4>
+            <p class="text-[10px] text-muted mt-0.5">4 of 6 goals today</p>
+          </div>
+          <button class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-md transition">Start</button>
+        </div>
+
+        <!-- Course 2: Graphics Design -->
+        <div class="flex items-center gap-3 bg-dashboard-card border border-neutral-800/40 rounded-xl p-3">
+          <div class="w-9 h-9 rounded-lg bg-cyan-950/40 border border-cyan-900/20 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="palette" class="w-4 h-4 text-cyan-400"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h4 class="text-xs font-semibold truncate">Graphics Design</h4>
+            <p class="text-[10px] text-muted mt-0.5">Project due soon</p>
+          </div>
+          <button class="bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-md transition">Start</button>
+        </div>
+
+        <!-- Course 3: AI Prompt Engineering -->
+        <div class="flex items-center gap-3 bg-dashboard-card border border-neutral-800/40 rounded-xl p-3">
+          <div class="w-9 h-9 rounded-lg bg-amber-950/30 border border-amber-900/20 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="terminal" class="w-4 h-4 text-amber-500"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h4 class="text-xs font-semibold truncate">AI Prompt Engineering</h4>
+            <p class="text-[10px] text-muted mt-0.5">3/5 modules correct</p>
+          </div>
+          <button class="bg-amber-900/30 hover:bg-amber-900/40 text-amber-500 text-[10px] font-bold px-3 py-1.5 rounded-full border border-amber-900/40 transition">Review</button>
+        </div>
+
+        <!-- Course 4: Python -->
+        <div class="flex items-center gap-3 bg-dashboard-card border border-neutral-800/40 rounded-xl p-3">
+          <div class="w-9 h-9 rounded-lg bg-purple-950/40 border border-purple-900/20 flex items-center justify-center flex-shrink-0">
+            <i data-lucide="binary" class="w-4 h-4 text-purple-400"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h4 class="text-xs font-semibold truncate">Python</h4>
+            <p class="text-[10px] text-muted mt-0.5">Up next</p>
+          </div>
+          <button class="bg-neutral-800 text-neutral-400 text-[10px] font-bold px-3 py-1.5 rounded-full border border-neutral-700 cursor-not-allowed">Locked</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="flex justify-between items-center border-t border-neutral-800/60 pt-4 px-2 bg-dashboard-dark">
+      <a href="home.html" class="flex flex-col items-center gap-1 text-neutral-500 hover:text-neutral-300 transition">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Home</span>
+      </a>
+      <a href="track.html" class="flex flex-col items-center gap-1 text-emerald-500">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Track</span>
+      </a>
+      <button class="flex flex-col items-center gap-1 text-neutral-500 hover:text-neutral-300 transition">
+        <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Progress</span>
+      </button>
+      <button class="flex flex-col items-center gap-1 text-neutral-500 hover:text-neutral-300 transition">
+        <i data-lucide="user" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Profile</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

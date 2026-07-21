@@ -1,0 +1,110 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# KUKUNET Digital — Docker Compose
+# Services: postgres · api (NestJS) · web (Next.js) · nginx
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: kukunet-digital
+
+services:
+
+  # ── PostgreSQL ─────────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: kukunet-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: kukunet
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d kukunet"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - kukunet-net
+
+  # ── NestJS API ─────────────────────────────────────────────────────────────
+  api:
+    build:
+      context: ../api
+      dockerfile: ../kukunet digital/Dockerfile.api
+    container_name: kukunet-api
+    restart: unless-stopped
+    environment:
+      PORT: 3001
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/kukunet
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-replace-with-a-long-random-access-secret}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-replace-with-a-long-random-refresh-secret}
+      JWT_ACCESS_TTL_SECONDS: ${JWT_ACCESS_TTL_SECONDS:-900}
+      JWT_REFRESH_TTL_SECONDS: ${JWT_REFRESH_TTL_SECONDS:-604800}
+      BCRYPT_SALT_ROUNDS: ${BCRYPT_SALT_ROUNDS:-12}
+      NODE_ENV: production
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - kukunet-net
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3001/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  # ── Next.js Web ────────────────────────────────────────────────────────────
+  web:
+    build:
+      context: ../web
+      dockerfile: ../kukunet digital/Dockerfile.web
+      args:
+        API_BASE_URL: http://api:3001
+    container_name: kukunet-web
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      API_BASE_URL: http://api:3001
+      NEXT_TELEMETRY_DISABLED: "1"
+      HOSTNAME: "0.0.0.0"
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - kukunet-net
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/ || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  # ── Nginx Reverse Proxy ────────────────────────────────────────────────────
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: kukunet-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      # Uncomment for HTTPS (provide your certs in ./nginx/certs/):
+      # - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      # Uncomment for TLS:
+      # - ./nginx/certs:/etc/ssl:ro
+    depends_on:
+      web:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+    networks:
+      - kukunet-net
+
+# ── Volumes ───────────────────────────────────────────────────────────────────
+volumes:
+  postgres_data:
+    driver: local
+
+# ── Networks ──────────────────────────────────────────────────────────────────
+networks:
+  kukunet-net:
+    driver: bridge

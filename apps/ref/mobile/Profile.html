@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kukunet Digital - Profile</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #FFFFFF;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .bg-dashboard-dark { background-color: #212121; }
+    .bg-dashboard-card { background-color: #1A1A1A; }
+    .text-muted { color: #8E8E8E; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 bg-neutral-950">
+
+  <!-- PROFILE SCREEN CONTAINER -->
+  <div class="w-[360px] h-[740px] bg-dashboard-dark rounded-[40px] border border-neutral-800 p-6 flex flex-col justify-between shadow-2xl overflow-hidden relative">
+    <div>
+      <!-- Header -->
+      <div class="flex justify-between items-start mb-6">
+        <div>
+          <h1 class="text-2xl font-bold tracking-wide">Profile</h1>
+          <p class="text-xs text-muted mt-1">Manage your account settings</p>
+        </div>
+        <button class="p-1 hover:opacity-80 transition">
+          <i data-lucide="settings" class="w-5 h-5 text-neutral-400"></i>
+        </button>
+      </div>
+
+      <!-- User Info Identity Card -->
+      <div class="flex flex-col items-center text-center mb-6">
+        <div class="w-20 h-20 rounded-full bg-emerald-950 border-2 border-emerald-500 flex items-center justify-center mb-3 shadow-xl">
+          <i data-lucide="user" class="w-10 h-10 text-emerald-400"></i>
+        </div>
+        <h2 class="text-base font-bold tracking-wide">Abel Mesfin</h2>
+        <p class="text-xs text-muted">Student Developer</p>
+      </div>
+
+      <!-- Quick Achievements Row -->
+      <div class="grid grid-cols-3 gap-2.5 mb-6 text-center">
+        <div class="bg-dashboard-card border border-neutral-800/40 rounded-xl p-2.5">
+          <span class="block text-sm font-bold text-emerald-400">4</span>
+          <span class="text-[9px] text-muted font-medium">Courses</span>
+        </div>
+        <div class="bg-dashboard-card border border-neutral-800/40 rounded-xl p-2.5">
+          <span class="block text-sm font-bold text-cyan-400">12</span>
+          <span class="text-[9px] text-muted font-medium">Quizzes Done</span>
+        </div>
+        <div class="bg-dashboard-card border border-neutral-800/40 rounded-xl p-2.5">
+          <span class="block text-sm font-bold text-amber-500">5 Days</span>
+          <span class="text-[9px] text-muted font-medium">Streak</span>
+        </div>
+      </div>
+
+      <!-- Account Actions Menu List -->
+      <div class="space-y-2">
+        <!-- Option 1 -->
+        <button class="w-full flex items-center justify-between bg-dashboard-card hover:bg-neutral-800/60 border border-neutral-800/40 rounded-xl p-3.5 transition group">
+          <div class="flex items-center gap-3">
+            <i data-lucide="book-open-check" class="w-4 h-4 text-neutral-400 group-hover:text-emerald-400 transition"></i>
+            <span class="text-xs font-semibold text-neutral-300">My Certificates</span>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-600"></i>
+        </button>
+        <!-- Option 2 -->
+        <button class="w-full flex items-center justify-between bg-dashboard-card hover:bg-neutral-800/60 border border-neutral-800/40 rounded-xl p-3.5 transition group">
+          <div class="flex items-center gap-3">
+            <i data-lucide="bell-ring" class="w-4 h-4 text-neutral-400 group-hover:text-emerald-400 transition"></i>
+            <span class="text-xs font-semibold text-neutral-300">Notifications</span>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-600"></i>
+        </button>
+        <!-- Option 3 -->
+        <button class="w-full flex items-center justify-between bg-dashboard-card hover:bg-neutral-800/60 border border-neutral-800/40 rounded-xl p-3.5 transition group">
+          <div class="flex items-center gap-3">
+            <i data-lucide="shield" class="w-4 h-4 text-neutral-400 group-hover:text-emerald-400 transition"></i>
+            <span class="text-xs font-semibold text-neutral-300">Privacy & Security</span>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-neutral-600"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="flex justify-between items-center border-t border-neutral-800/60 pt-4 px-2 bg-dashboard-dark">
+      <a href="home.html" class="flex flex-col items-center gap-1 text-neutral-500 hover:text-neutral-300 transition">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Home</span>
+      </a>
+      <a href="track.html" class="flex flex-col items-center gap-1 text-neutral-500 hover:text-neutral-300 transition">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Track</span>
+      </a>
+      <a href="progress.html" class="flex flex-col items-center gap-1 text-neutral-500 hover:text-neutral-300 transition">
+        <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Progress</span>
+      </a>
+      <a href="profile.html" class="flex flex-col items-center gap-1 text-emerald-500">
+        <i data-lucide="user" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Profile</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

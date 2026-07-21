@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kukunet Digital - Progress</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #FFFFFF;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .bg-dashboard-dark { background-color: #212121; }
+    .bg-dashboard-card { background-color: #1A1A1A; }
+    .text-muted { color: #8E8E8E; }
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+    .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 bg-neutral-950">
+
+  <!-- PROGRESS SCREEN CONTAINER -->
+  <div class="w-[360px] h-[740px] bg-dashboard-dark rounded-[40px] border border-neutral-800 p-6 flex flex-col justify-between shadow-2xl overflow-hidden relative">
+    <div>
+      <!-- Header -->
+      <div class="flex justify-between items-start mb-6">
+        <div>
+          <h1 class="text-2xl font-bold tracking-wide">Progress</h1>
+          <p class="text-xs text-muted mt-1">Your learning metrics at a glance</p>
+        </div>
+        <button class="p-1 hover:opacity-80 transition">
+          <i data-lucide="share-2" class="w-5 h-5 text-neutral-400"></i>
+        </button>
+      </div>
+
+      <!-- Weekly Activity Graph Mockup -->
+      <div class="bg-dashboard-card border border-neutral-800/60 rounded-2xl p-4 mb-6">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xs font-semibold text-neutral-300">Study Time (Hours)</h3>
+          <span class="text-[10px] text-emerald-500 font-bold bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-900/30">This Week</span>
+        </div>
+        <!-- Bar Chart Visual -->
+        <div class="flex items-end justify-between h-24 pt-2 px-1">
+          <div class="flex flex-col items-center gap-1.5 w-6">
+            <div class="bg-neutral-800 w-full h-8 rounded-t-sm"></div>
+            <span class="text-[9px] text-muted">M</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 w-6">
+            <div class="bg-emerald-500 w-full h-16 rounded-t-sm shadow-md shadow-emerald-500/10"></div>
+            <span class="text-[9px] text-emerald-400 font-medium">T</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 w-6">
+            <div class="bg-neutral-800 w-full h-6 rounded-t-sm"></div>
+            <span class="text-[9px] text-muted">W</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 w-6">
+            <div class="bg-emerald-500 w-full h-20 rounded-t-sm shadow-md shadow-emerald-500/10"></div>
+            <span class="text-[9px] text-emerald-400 font-medium">T</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 w-6">
+            <div class="bg-neutral-800 w-full h-11 rounded-t-sm"></div>
+            <span class="text-[9px] text-muted">F</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 w-6">
+            <div class="bg-cyan-500 w-full h-4 rounded-t-sm"></div>
+            <span class="text-[9px] text-muted">S</span>
+          </div>
+          <div class="flex flex-col items-center gap-1.5 w-6">
+            <div class="bg-neutral-800 w-full h-0.5 rounded-t-sm"></div>
+            <span class="text-[9px] text-muted">S</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Breakdown Track Status -->
+      <h2 class="text-sm font-semibold tracking-wide mb-3">Course Completion</h2>
+      <div class="space-y-4 max-h-[250px] overflow-y-auto pr-1 scrollbar-none">
+        
+        <!-- Course 1 Breakdown -->
+        <div>
+          <div class="flex justify-between items-baseline mb-1">
+            <span class="text-xs font-medium text-neutral-300">HTML, CSS, JS</span>
+            <span class="text-[11px] text-emerald-400 font-bold">66%</span>
+          </div>
+          <div class="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-emerald-500 h-full w-[66%] rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- Course 2 Breakdown -->
+        <div>
+          <div class="flex justify-between items-baseline mb-1">
+            <span class="text-xs font-medium text-neutral-300">Graphics Design</span>
+            <span class="text-[11px] text-cyan-400 font-bold">40%</span>
+          </div>
+          <div class="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-cyan-400 h-full w-[40%] rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- Course 3 Breakdown -->
+        <div>
+          <div class="flex justify-between items-baseline mb-1">
+            <span class="text-xs font-medium text-neutral-300">AI Prompt Engineering</span>
+            <span class="text-[11px] text-amber-500 font-bold">15%</span>
+          </div>
+          <div class="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-amber-500 h-full w-[15%] rounded-full"></div>
+          </div>
+        </div>
+
+        <!-- Course 4 Breakdown -->
+        <div>
+          <div class="flex justify-between items-baseline mb-1">
+            <span class="text-xs font-medium text-neutral-400">Python</span>
+            <span class="text-[11px] text-muted">0%</span>
+          </div>
+          <div class="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+            <div class="bg-neutral-700 h-full w-[0%] rounded-full"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="flex justify-between items-center border-t border-neutral-800/60 pt-4 px-2 bg-dashboard-dark">
+      <a href="home.html" class="flex flex-col items-center gap-1 text-neutral-500 hover:text-neutral-300 transition">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Home</span>
+      </a>
+      <a href="track.html" class="flex flex-col items-center gap-1 text-neutral-500 hover:text-neutral-300 transition">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Track</span>
+      </a>
+      <a href="progress.html" class="flex flex-col items-center gap-1 text-emerald-500">
+        <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Progress</span>
+      </a>
+      <a href="profile.html" class="flex flex-col items-center gap-1 text-neutral-500 hover:text-neutral-300 transition">
+        <i data-lucide="user" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Profile</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
