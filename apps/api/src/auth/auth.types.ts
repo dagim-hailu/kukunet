@@ -11,6 +11,7 @@ export interface AuthUser {
   email: string;
   createdAt: string;
   updatedAt: string;
+  selectedCourses: string[];
 }
 
 export interface AuthResponse {

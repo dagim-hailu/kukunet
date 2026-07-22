@@ -1,16 +1,24 @@
 'use client';
 
 import { useState } from 'react';
+import { useDashboard } from '../../app/dashboard/layout';
+import type { Course } from '../../lib/types';
 
-const courses = [
-  { name: 'HTML, CSS, JS', detail: '4 of 6 goals today', progress: 66, status: 'In progress' },
-  { name: 'Graphics Design', detail: 'Project due soon', progress: 40, status: 'In progress' },
-  { name: 'AI Prompt Engineering', detail: '3/5 modules correct', progress: 15, status: 'Review' },
-  { name: 'Python', detail: 'Up next', progress: 0, status: 'Locked' },
-] as const;
+const courseTrackMap: Record<Course, { name: string; detail: string; progress: number; status: 'In progress' | 'Review' | 'Locked' }> = {
+  Python: { name: 'Python Programming', detail: 'Up next', progress: 45, status: 'In progress' },
+  AI: { name: 'AI & Machine Learning', detail: '3/5 modules correct', progress: 15, status: 'Review' },
+  WebDev: { name: 'Web Development', detail: '4 of 6 goals today', progress: 66, status: 'In progress' },
+  Graphics: { name: 'Graphics Design', detail: 'Project due soon', progress: 40, status: 'In progress' },
+};
 
 export function DesktopTrackView() {
+  const { profile } = useDashboard();
   const [activeTab, setActiveTab] = useState<'core' | 'electives'>('core');
+  
+  if (!profile) return null;
+
+  const selectedCourses = profile.user.selectedCourses;
+  const filteredTracks = selectedCourses.map(course => courseTrackMap[course]);
 
   return (
     <div className="rounded-[2rem] border border-[var(--border)] bg-[var(--bg-2)] p-8 shadow-sm">
@@ -18,9 +26,9 @@ export function DesktopTrackView() {
         <div>
           <p className="text-sm uppercase tracking-[0.22em] text-[var(--text-3)]">Learning track</p>
           <h1 className="mt-3 font-[family-name:var(--font-outfit)] text-4xl font-semibold tracking-[-0.05em] text-[var(--text)]">
-            Full stack track
+            Your Learning Path
           </h1>
-          <p className="mt-2 text-[var(--text-2)]">25% complete · Core curriculum path</p>
+          <p className="mt-2 text-[var(--text-2)]">{filteredTracks.length} courses · Personalized path</p>
         </div>
         <div className="flex gap-4 border-b border-[var(--border)]">
           {(['core', 'electives'] as const).map((tab) => (
@@ -58,7 +66,7 @@ export function DesktopTrackView() {
           <div className="mt-8">
             <h2 className="font-[family-name:var(--font-outfit)] text-2xl text-[var(--text)]">Continue learning</h2>
             <div className="mt-4 grid gap-3">
-              {courses.map((course) => (
+              {filteredTracks.map((course) => (
                 <article
                   key={course.name}
                   className="flex flex-col gap-4 rounded-[1.25rem] border border-[var(--border)] bg-[var(--bg-3)] p-5 sm:flex-row sm:items-center"

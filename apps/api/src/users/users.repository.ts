@@ -8,6 +8,7 @@ interface CreateUserInput {
   email: string;
   name: string;
   passwordHash: string;
+  selectedCourses?: string[];
 }
 
 @Injectable()
@@ -43,6 +44,7 @@ export class UsersRepository {
         email: input.email,
         name: input.name,
         passwordHash: input.passwordHash,
+        selectedCourses: input.selectedCourses ?? [],
         profileData: {},
         createdAt: now,
         updatedAt: now,

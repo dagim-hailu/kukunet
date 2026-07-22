@@ -17,6 +17,10 @@ export const users = pgTable(
     email: varchar('email', { length: 255 }).notNull(),
     passwordHash: varchar('password_hash', { length: 255 }).notNull(),
     name: varchar('name', { length: 120 }).notNull(),
+    selectedCourses: jsonb('selected_courses')
+      .$type<string[]>()
+      .notNull()
+      .default(sql`'[]'::jsonb`),
     profileData: jsonb('profile_data')
       .$type<Record<string, never>>()
       .notNull()

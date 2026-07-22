@@ -19,6 +19,8 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from '../theme-toggle';
+import { useDashboard } from '../../app/dashboard/layout';
+import type { Course } from '../../lib/types';
 
 const categories = [
   { label: 'Category', icon: LayoutGrid, bg: 'bg-emerald-950/40', border: 'border-emerald-900/30', color: 'text-emerald-400' },
@@ -29,15 +31,21 @@ const categories = [
   { label: 'Leaderboard', icon: Trophy, bg: 'bg-emerald-950/40', border: 'border-emerald-900/30', color: 'text-emerald-400' },
 ] as const;
 
-const courses = [
-  { name: 'HTML, CSS, JS', rating: '8.9', icon: Code2, bg: 'bg-emerald-950/30', border: 'border-emerald-900/20', hover: 'group-hover:bg-emerald-950/50', color: 'text-emerald-400' },
-  { name: 'Graphics Design', rating: '8.5', icon: Palette, bg: 'bg-cyan-950/30', border: 'border-cyan-900/20', hover: 'group-hover:bg-cyan-950/50', color: 'text-cyan-400' },
-  { name: 'AI Prompts', rating: '9.2', icon: Terminal, bg: 'bg-amber-950/20', border: 'border-amber-900/20', hover: 'group-hover:bg-amber-950/30', color: 'text-amber-500' },
-  { name: 'Python', rating: '8.7', icon: Binary, bg: 'bg-purple-950/20', border: 'border-purple-900/20', hover: 'group-hover:bg-purple-950/30', color: 'text-purple-400' },
-] as const;
+const courseMap: Record<Course, { name: string; rating: string; icon: any; bg: string; border: string; hover: string; color: string }> = {
+  Python: { name: 'Python Programming', rating: '8.7', icon: Binary, bg: 'bg-purple-950/20', border: 'border-purple-900/20', hover: 'group-hover:bg-purple-950/30', color: 'text-purple-400' },
+  AI: { name: 'AI & Machine Learning', rating: '9.2', icon: Terminal, bg: 'bg-amber-950/20', border: 'border-amber-900/20', hover: 'group-hover:bg-amber-950/30', color: 'text-amber-500' },
+  WebDev: { name: 'Web Development', rating: '8.9', icon: Code2, bg: 'bg-emerald-950/30', border: 'border-emerald-900/20', hover: 'group-hover:bg-emerald-950/50', color: 'text-emerald-400' },
+  Graphics: { name: 'Graphics Design', rating: '8.5', icon: Palette, bg: 'bg-cyan-950/30', border: 'border-cyan-900/20', hover: 'group-hover:bg-cyan-950/50', color: 'text-cyan-400' },
+};
 
 export function MobileHomeView() {
   const [searchQuery, setSearchQuery] = useState('');
+  const { profile } = useDashboard();
+  
+  if (!profile) return null;
+
+  const selectedCourses = profile.user.selectedCourses;
+  const filteredCourses = selectedCourses.map(course => courseMap[course]);
 
   return (
     <div className="flex flex-col min-h-full bg-[var(--bg)] text-[var(--text)] transition-colors duration-300">
@@ -98,10 +106,10 @@ export function MobileHomeView() {
 
         <div className="flex-shrink-0">
           <div className="flex justify-between items-baseline mb-3">
-            <h2 className="text-base font-semibold tracking-wide">Recommended for you</h2>
+            <h2 className="text-base font-semibold tracking-wide">Your Courses</h2>
             <button
               type="button"
-              onClick={() => alert('Viewing more recommended items...')}
+              onClick={() => alert('Viewing more items...')}
               className="text-sm text-emerald-500 font-semibold hover:underline bg-transparent border-none cursor-pointer"
             >
               More
@@ -109,7 +117,7 @@ export function MobileHomeView() {
           </div>
 
           <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-none">
-            {courses.map(({ name, rating, icon: Icon, bg, border, hover, color }) => (
+            {filteredCourses.map(({ name, rating, icon: Icon, bg, border, hover, color }) => (
               <div key={name} className="flex-shrink-0 w-32 cursor-pointer group">
                 <div className={`h-24 rounded-2xl ${bg} border ${border} flex items-center justify-center mb-2 ${hover} transition`}>
                   <Icon className={`w-8 h-8 ${color}`} />

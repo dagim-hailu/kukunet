@@ -2,6 +2,8 @@
 
 import { Share2 } from 'lucide-react';
 import { ThemeToggle } from '../theme-toggle';
+import { useDashboard } from '../../app/dashboard/layout';
+import type { Course } from '../../lib/types';
 
 const weeklyBars: Array<{
   label: string;
@@ -18,14 +20,21 @@ const weeklyBars: Array<{
   { label: 'S', height: 'h-0.5', active: false },
 ];
 
-const courseProgress = [
-  { name: 'HTML, CSS, JS', percent: 66, color: 'bg-emerald-500', textColor: 'text-emerald-400', dimmed: false },
-  { name: 'Graphics Design', percent: 40, color: 'bg-cyan-400', textColor: 'text-cyan-400', dimmed: false },
-  { name: 'AI Prompt Engineering', percent: 15, color: 'bg-amber-500', textColor: 'text-amber-500', dimmed: false },
-  { name: 'Python', percent: 0, color: 'bg-neutral-700', textColor: 'text-muted', dimmed: true },
-] as const;
+const courseProgressMap: Record<Course, { name: string; percent: number; color: string; textColor: string; dimmed: boolean }> = {
+  Python: { name: 'Python Programming', percent: 45, color: 'bg-purple-500', textColor: 'text-purple-400', dimmed: false },
+  AI: { name: 'AI & Machine Learning', percent: 15, color: 'bg-amber-500', textColor: 'text-amber-500', dimmed: false },
+  WebDev: { name: 'Web Development', percent: 66, color: 'bg-emerald-500', textColor: 'text-emerald-400', dimmed: false },
+  Graphics: { name: 'Graphics Design', percent: 40, color: 'bg-cyan-400', textColor: 'text-cyan-400', dimmed: false },
+};
 
 export function MobileProgressView() {
+  const { profile } = useDashboard();
+  
+  if (!profile) return null;
+  
+  const selectedCourses = profile.user.selectedCourses;
+  const filteredProgress = selectedCourses.map(course => courseProgressMap[course]);
+
   return (
     <div className="flex flex-col min-h-full bg-[var(--bg)] text-[var(--text)] transition-colors duration-300">
       <div className="flex flex-col flex-1 overflow-y-auto scrollbar-none px-6 pt-6 pb-4">
@@ -72,7 +81,7 @@ export function MobileProgressView() {
 
         <h2 className="text-base font-semibold tracking-wide mb-3">Course Completion</h2>
         <div className="space-y-4">
-          {courseProgress.map((course) => (
+          {filteredProgress.map((course) => (
             <div key={course.name}>
               <div className="flex justify-between items-baseline mb-1">
                 <span className={`text-sm font-medium ${course.dimmed ? 'text-neutral-400' : 'text-neutral-300'}`}>

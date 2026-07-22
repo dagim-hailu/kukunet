@@ -5,7 +5,17 @@ import {
   Matches,
   MaxLength,
   MinLength,
+  IsArray,
+  ArrayNotEmpty,
+  IsIn,
 } from 'class-validator';
+
+export enum Course {
+  Python = 'Python',
+  AI = 'AI',
+  WebDev = 'WebDev',
+  Graphics = 'Graphics',
+}
 
 export class RegisterDto {
   @IsString()
@@ -30,4 +40,9 @@ export class RegisterDto {
   @MinLength(8)
   @MaxLength(128)
   confirmPassword!: string;
+
+  @IsArray()
+  @ArrayNotEmpty({ message: 'Please select at least one course.' })
+  @IsIn(Object.values(Course), { each: true, message: 'Invalid course selected.' })
+  selectedCourses!: Course[];
 }

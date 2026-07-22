@@ -1,10 +1,85 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from './theme-toggle';
 
+interface AppDetail {
+  name: string;
+  description: string;
+  timeline: string;
+  technologies: string[];
+  features: string[];
+  deploymentStatus: string;
+  metrics: string[];
+}
+
+const appsData: AppDetail[] = [
+  {
+    name: 'Fertilizer Management System',
+    description: 'A comprehensive system for managing fertilizer distribution, inventory, and farmer registration in Ethiopia, designed to improve agricultural productivity and ensure timely access to inputs.',
+    timeline: '2023 - Present',
+    technologies: ['NestJS', 'PostgreSQL', 'Drizzle ORM', 'Next.js', 'React', 'Tailwind CSS'],
+    features: [
+      'Farmer registration and management',
+      'Fertilizer inventory tracking',
+      'Distribution logistics management',
+      'Analytics and reporting dashboard',
+      'Mobile app integration for field agents'
+    ],
+    deploymentStatus: 'Live in Production',
+    metrics: [
+      '10,000+ registered farmers',
+      '50+ regional distribution centers',
+      '99.5% uptime',
+      '24/7 monitoring and support'
+    ]
+  },
+  {
+    name: 'Training Management System',
+    description: 'A platform for managing coding training programs for kids and adults in Ethiopia, featuring course management, progress tracking, and certification.',
+    timeline: '2024 - Present',
+    technologies: ['NestJS', 'PostgreSQL', 'Next.js', 'React', 'Tailwind CSS', 'WebSocket'],
+    features: [
+      'Course and curriculum management',
+      'Student progress tracking',
+      'Certification generation',
+      'Real-time collaborative coding',
+      'Gamified learning experience'
+    ],
+    deploymentStatus: 'Live in Production',
+    metrics: [
+      '500+ active students',
+      '10+ training programs',
+      '30+ certified instructors',
+      '5-year goal to train 1000+ kids'
+    ]
+  },
+  {
+    name: 'AIISS - Investment Promotion System',
+    description: 'An investment promotion and management system designed to attract and manage investments in Ethiopian agriculture and related sectors.',
+    timeline: '2023 - 2024',
+    technologies: ['NestJS', 'PostgreSQL', 'Next.js', 'React', 'Tailwind CSS'],
+    features: [
+      'Investment opportunity listings',
+      'Investor registration and profile management',
+      'Project tracking and reporting',
+      'Analytics dashboard for stakeholders',
+      'Document management system'
+    ],
+    deploymentStatus: 'Completed',
+    metrics: [
+      '20+ investment opportunities listed',
+      '50+ registered investors',
+      'Project success rate of 85%',
+      'Recognized by Ethiopian Ministry of Agriculture'
+    ]
+  }
+];
+
 export function LandingPage() {
+  const [selectedApp, setSelectedApp] = useState<AppDetail | null>(null);
+
   useEffect(() => {
     const SCRIPT_ID = 'novapay-ticker-script';
 
@@ -337,22 +412,22 @@ export function LandingPage() {
                     </div>
                   </div>
                   <div className="pm-list">
-                    <div className="pm-list-item">
-                      <div className="pm-list-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#3DCC8E' }}>Ag</div>
-                      <div className="pm-list-info">
-                        <div className="pm-list-name">Fertilizer Management System</div>
-                        <div className="pm-list-sub">Completed • Live</div>
+                    {appsData.map((app, index) => (
+                      <div 
+                        key={index} 
+                        className="pm-list-item cursor-pointer hover:opacity-80 transition"
+                        onClick={() => setSelectedApp(app)}
+                      >
+                        <div className="pm-list-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#3DCC8E' }}>
+                          {app.name.charAt(0)}
+                        </div>
+                        <div className="pm-list-info">
+                          <div className="pm-list-name">{app.name}</div>
+                          <div className="pm-list-sub">{app.deploymentStatus}</div>
+                        </div>
+                        <div className="pm-list-amt" style={{ color: 'var(--green)' }}>View →</div>
                       </div>
-                      <div className="pm-list-amt" style={{ color: 'var(--green)' }}>✓</div>
-                    </div>
-                    <div className="pm-list-item">
-                      <div className="pm-list-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#5CE8A8' }}>Tr</div>
-                      <div className="pm-list-info">
-                        <div className="pm-list-name">Training Management System</div>
-                        <div className="pm-list-sub">Completed • Live</div>
-                      </div>
-                      <div className="pm-list-amt" style={{ color: 'var(--green)' }}>✓</div>
-                    </div>
+                    ))}
                   </div>
                 </div>
 
@@ -786,6 +861,79 @@ export function LandingPage() {
           </div>
         </div>
       </footer>
+
+      {/* App Detail Modal */}
+      {selectedApp && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={() => setSelectedApp(null)}>
+          <div 
+            className="bg-[var(--bg2)] border border-[var(--border)] rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-bold text-[var(--text)]">{selectedApp.name}</h2>
+              <button 
+                type="button" 
+                onClick={() => setSelectedApp(null)}
+                className="text-[var(--text3)] hover:text-[var(--text)] transition text-2xl"
+              >
+                &times;
+              </button>
+            </div>
+
+            <div className="mb-4">
+              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold text-[var(--green)] bg-[var(--green)]/10 border border-[var(--green)]/20">
+                {selectedApp.deploymentStatus}
+              </span>
+            </div>
+
+            <p className="text-[var(--text2)] mb-6 leading-relaxed">{selectedApp.description}</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="bg-[var(--bg3)] border border-[var(--border)] rounded-xl p-4">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--text3)] mb-2">Timeline</h3>
+                <p className="text-[var(--text)] font-medium">{selectedApp.timeline}</p>
+              </div>
+
+              <div className="bg-[var(--bg3)] border border-[var(--border)] rounded-xl p-4">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--text3)] mb-2">Technologies</h3>
+                <div className="flex flex-wrap gap-2">
+                  {selectedApp.technologies.map((tech, i) => (
+                    <span 
+                      key={i} 
+                      className="px-3 py-1 rounded-full text-xs font-medium bg-[var(--sky)]/10 text-[var(--sky)] border border-[var(--sky)]/20"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--text3)] mb-3">Key Features</h3>
+              <ul className="space-y-2">
+                {selectedApp.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-2 text-[var(--text2)]">
+                    <span className="text-[var(--green)] font-bold mt-1">•</span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[var(--text3)] mb-3">Metrics</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {selectedApp.metrics.map((metric, i) => (
+                  <div key={i} className="bg-[var(--bg3)] border border-[var(--border)] rounded-xl p-4">
+                    <p className="text-[var(--text)] font-medium text-sm">{metric}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

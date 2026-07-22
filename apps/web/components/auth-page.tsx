@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { Logo } from './logo';
-import type { LoginRequest, RegisterRequest } from '../lib/types';
+import type { LoginRequest, RegisterRequest, Course } from '../lib/types';
 
 type AuthMode = 'login' | 'register';
 
@@ -17,6 +17,7 @@ interface FieldErrors {
   email?: string;
   password?: string;
   confirmPassword?: string;
+  selectedCourses?: string;
   form?: string;
 }
 
@@ -27,6 +28,8 @@ const passwordRules = [
   'One number',
   'One special character',
 ];
+
+const AVAILABLE_COURSES: Course[] = ['Python', 'AI', 'WebDev', 'Graphics'];
 
 function validateEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -44,6 +47,7 @@ export function AuthPage({ mode }: AuthPageProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -108,6 +112,14 @@ export function AuthPage({ mode }: AuthPageProps) {
     </svg>
   );
 
+  function toggleCourse(course: Course) {
+    if (selectedCourses.includes(course)) {
+      setSelectedCourses(prev => prev.filter(c => c !== course));
+    } else {
+      setSelectedCourses(prev => [...prev, course]);
+    }
+  }
+
   function getValidationErrors(): FieldErrors {
     const nextErrors: FieldErrors = {};
 
@@ -126,6 +138,10 @@ export function AuthPage({ mode }: AuthPageProps) {
 
     if (isRegister && confirmPassword !== password) {
       nextErrors.confirmPassword = 'Password confirmation does not match.';
+    }
+
+    if (isRegister && selectedCourses.length === 0) {
+      nextErrors.selectedCourses = 'Please select at least one course.';
     }
 
     return nextErrors;
@@ -150,6 +166,7 @@ export function AuthPage({ mode }: AuthPageProps) {
             email: email.trim(),
             password,
             confirmPassword,
+            selectedCourses,
           }
         : {
             email: email.trim(),
@@ -357,6 +374,30 @@ export function AuthPage({ mode }: AuthPageProps) {
                   />
                 </div>
                 {errors.confirmPassword && <span className="text-xs text-rose-400 pl-1">{errors.confirmPassword}</span>}
+              </div>
+            )}
+
+            {/* Course Selection (Register only) */}
+            {isRegister && (
+              <div>
+                <label className="block text-[10px] font-bold uppercase tracking-wider text-neutral-400 mb-1.5 pl-1">Select Your Courses</label>
+                <div className="grid grid-cols-2 gap-2">
+                  {AVAILABLE_COURSES.map((course) => (
+                    <button
+                      key={course}
+                      type="button"
+                      onClick={() => toggleCourse(course)}
+                      className={`flex items-center justify-center gap-2 py-3 rounded-xl border text-xs font-bold transition-all duration-300 ${
+                        selectedCourses.includes(course)
+                          ? 'border-emerald-500 bg-emerald-500/10 text-emerald-400'
+                          : 'border-neutral-800 bg-[var(--bg-3)] text-neutral-400 hover:border-neutral-700'
+                      }`}
+                    >
+                      {course}
+                    </button>
+                  ))}
+                </div>
+                {errors.selectedCourses && <span className="text-xs text-rose-400 pl-1 mt-1.5 block">{errors.selectedCourses}</span>}
               </div>
             )}
 

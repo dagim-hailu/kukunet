@@ -59,6 +59,7 @@ export class AuthService {
       email,
       name,
       passwordHash,
+      selectedCourses: registerDto.selectedCourses,
     });
     const tokens = await this.issueTokens(user, requestContext);
 
@@ -340,6 +341,7 @@ export class AuthService {
       email: user.email,
       createdAt: user.createdAt.toISOString(),
       updatedAt: user.updatedAt.toISOString(),
+      selectedCourses: user.selectedCourses,
     };
   }
 }

@@ -1,8 +1,11 @@
+export type Course = 'Python' | 'AI' | 'WebDev' | 'Graphics';
+
 export interface RegisterRequest {
   name: string;
   email: string;
   password: string;
   confirmPassword: string;
+  selectedCourses: Course[];
 }
 
 export interface LoginRequest {
@@ -23,6 +26,7 @@ export interface AuthUser {
   email: string;
   createdAt: string;
   updatedAt: string;
+  selectedCourses: Course[];
 }
 
 export interface AuthResponse {

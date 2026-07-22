@@ -11,30 +11,31 @@ import {
   Terminal,
 } from 'lucide-react';
 import { ThemeToggle } from '../theme-toggle';
+import { useDashboard } from '../../app/dashboard/layout';
+import type { Course } from '../../lib/types';
 
-const courses = [
-  {
-    name: 'HTML, CSS, JS',
-    detail: '4 of 6 goals today',
-    icon: Code2,
-    iconBg: 'bg-emerald-950/40 border-emerald-900/20',
-    iconColor: 'text-emerald-400',
+const courseTrackMap: Record<Course, {
+  name: string;
+  detail: string;
+  icon: any;
+  iconBg: string;
+  iconColor: string;
+  action: string;
+  actionClass: string;
+  disabled: boolean;
+}> = {
+  Python: {
+    name: 'Python Programming',
+    detail: 'Up next',
+    icon: Binary,
+    iconBg: 'bg-purple-950/40 border-purple-900/20',
+    iconColor: 'text-purple-400',
     action: 'Start',
-    actionClass: 'bg-emerald-600 hover:bg-emerald-500 text-white',
+    actionClass: 'bg-purple-600 hover:bg-purple-500 text-white',
     disabled: false,
   },
-  {
-    name: 'Graphics Design',
-    detail: 'Project due soon',
-    icon: Palette,
-    iconBg: 'bg-cyan-950/40 border-cyan-900/20',
-    iconColor: 'text-cyan-400',
-    action: 'Start',
-    actionClass: 'bg-emerald-600 hover:bg-emerald-500 text-white',
-    disabled: false,
-  },
-  {
-    name: 'AI Prompt Engineering',
+  AI: {
+    name: 'AI & Machine Learning',
     detail: '3/5 modules correct',
     icon: Terminal,
     iconBg: 'bg-amber-950/30 border-amber-900/20',
@@ -43,20 +44,36 @@ const courses = [
     actionClass: 'bg-amber-900/30 hover:bg-amber-900/40 text-amber-500 border border-amber-900/40',
     disabled: false,
   },
-  {
-    name: 'Python',
-    detail: 'Up next',
-    icon: Binary,
-    iconBg: 'bg-purple-950/40 border-purple-900/20',
-    iconColor: 'text-purple-400',
-    action: 'Locked',
-    actionClass: 'bg-neutral-800 text-neutral-400 border border-neutral-700',
-    disabled: true,
+  WebDev: {
+    name: 'Web Development',
+    detail: '4 of 6 goals today',
+    icon: Code2,
+    iconBg: 'bg-emerald-950/40 border-emerald-900/20',
+    iconColor: 'text-emerald-400',
+    action: 'Start',
+    actionClass: 'bg-emerald-600 hover:bg-emerald-500 text-white',
+    disabled: false,
   },
-] as const;
+  Graphics: {
+    name: 'Graphics Design',
+    detail: 'Project due soon',
+    icon: Palette,
+    iconBg: 'bg-cyan-950/40 border-cyan-900/20',
+    iconColor: 'text-cyan-400',
+    action: 'Start',
+    actionClass: 'bg-cyan-600 hover:bg-cyan-500 text-white',
+    disabled: false,
+  },
+};
 
 export function MobileTrackView() {
   const [activeTab, setActiveTab] = useState<'core' | 'electives'>('core');
+  const { profile } = useDashboard();
+  
+  if (!profile) return null;
+
+  const selectedCourses = profile.user.selectedCourses;
+  const filteredTracks = selectedCourses.map(course => courseTrackMap[course]);
 
   return (
     <div className="flex flex-col min-h-full bg-[var(--bg)] text-[var(--text)] transition-colors duration-300">
@@ -64,7 +81,7 @@ export function MobileTrackView() {
         <div className="flex justify-between items-start mb-4 flex-shrink-0">
           <div>
             <h1 className="text-3xl font-bold tracking-wide">Track</h1>
-            <p className="text-sm text-muted mt-1">Full stack track · 25% done</p>
+            <p className="text-sm text-muted mt-1">{filteredTracks.length} courses · Personalized path</p>
           </div>
           <div className="flex items-center gap-2">
             <ThemeToggle />
@@ -141,7 +158,7 @@ export function MobileTrackView() {
             </div>
 
             <div className="space-y-2.5">
-              {courses.map((course) => {
+              {filteredTracks.map((course) => {
                 const Icon = course.icon;
                 return (
                   <div

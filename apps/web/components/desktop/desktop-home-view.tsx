@@ -3,14 +3,14 @@
 import { useDashboard } from '../../app/dashboard/layout';
 import { Search, Bell, LayoutGrid, List, SlidersHorizontal, Plus, BookOpen, Star } from 'lucide-react';
 import Link from 'next/link';
+import type { Course } from '../../lib/types';
 
 const COURSE_CARDS = [
-  { id: 1, category: 'DESIGN', categoryIcon: '🎨', title: 'Web Design\nFundamentals', lessons: 12, workshops: 4, gradient: 'linear-gradient(135deg,#f0c040,#f5a623)', emoji: '🖌️', saved: true, status: 'active' as const, progress: 68 },
-  { id: 2, category: 'SKILLS', categoryIcon: '💻', title: 'Frontend\nDevelopment', description: 'Build responsive and interactive web applications with modern frameworks.', lessons: 18, workshops: 6, gradient: 'linear-gradient(135deg,#e0378c,#b92d7a)', emoji: '⚡', saved: false, status: 'active' as const, progress: 35 },
-  { id: 3, category: 'AI & ML', categoryIcon: '🤖', title: 'AI & Machine\nLearning', lessons: 22, workshops: 8, gradient: 'linear-gradient(135deg,#7c3aed,#5b21b6)', emoji: '🧠', saved: true, status: 'active' as const, progress: 12 },
-  { id: 4, category: 'BUSINESS', categoryIcon: '📊', title: 'Digital Marketing\nStrategy', description: 'Learn to build audience, run campaigns and grow your business with proven strategies.', lessons: 16, workshops: 5, gradient: 'linear-gradient(135deg,#3b82f6,#1d4ed8)', emoji: '📱', saved: false, status: 'upcoming' as const, daysLeft: 10 },
-  { id: 5, category: 'GREEN TECH', categoryIcon: '🌱', title: 'Green Tech\n& Innovation', lessons: 14, workshops: 3, gradient: 'linear-gradient(135deg,#059669,#047857)', emoji: '🌿', saved: false, status: 'upcoming' as const, daysLeft: 3 },
-  { id: 6, category: 'DESIGN', categoryIcon: '🚀', title: 'UX Research\n& Testing', lessons: 16, workshops: 4, gradient: 'linear-gradient(135deg,#f59e0b,#d97706)', emoji: '🔬', saved: true, status: 'active' as const, progress: 91 },
+  { id: 1, course: 'Graphics' as Course, category: 'DESIGN', categoryIcon: '🎨', title: 'Web Design\nFundamentals', lessons: 12, workshops: 4, gradient: 'linear-gradient(135deg,#f0c040,#f5a623)', emoji: '🖌️', saved: true, status: 'active' as const, progress: 68 },
+  { id: 2, course: 'WebDev' as Course, category: 'SKILLS', categoryIcon: '💻', title: 'Frontend\nDevelopment', description: 'Build responsive and interactive web applications with modern frameworks.', lessons: 18, workshops: 6, gradient: 'linear-gradient(135deg,#e0378c,#b92d7a)', emoji: '⚡', saved: false, status: 'active' as const, progress: 35 },
+  { id: 3, course: 'AI' as Course, category: 'AI & ML', categoryIcon: '🤖', title: 'AI & Machine\nLearning', lessons: 22, workshops: 8, gradient: 'linear-gradient(135deg,#7c3aed,#5b21b6)', emoji: '🧠', saved: true, status: 'active' as const, progress: 12 },
+  { id: 4, course: 'Python' as Course, category: 'PROGRAMMING', categoryIcon: '🐍', title: 'Python\nProgramming', lessons: 20, workshops: 7, gradient: 'linear-gradient(135deg,#3730a3,#4f46e5)', emoji: '💻', saved: false, status: 'active' as const, progress: 45 },
+  { id: 5, course: 'WebDev' as Course, category: 'BACKEND', categoryIcon: '🚀', title: 'Full Stack\nWeb Dev', lessons: 24, workshops: 8, gradient: 'linear-gradient(135deg,#0891b2,#06b6d4)', emoji: '🌐', saved: true, status: 'upcoming' as const, daysLeft: 5 },
 ];
 
 type CourseCard = (typeof COURSE_CARDS)[number];
@@ -20,6 +20,8 @@ export function DesktopHomeView() {
 
   if (!profile || !summary) return null;
 
+  const selectedCourses = profile.user.selectedCourses;
+  const filteredCourses = COURSE_CARDS.filter(card => selectedCourses.includes(card.course));
   const firstName = profile.user.name.split(' ')[0];
 
   return (
@@ -65,15 +67,15 @@ export function DesktopHomeView() {
             </select>
           </div>
         </div>
-        <p className="dhv-count">Enrolled in <strong>{COURSE_CARDS.length} courses</strong></p>
+        <p className="dhv-count">Enrolled in <strong>{filteredCourses.length} courses</strong></p>
       </div>
 
       {/* ── Stats ────────────────────────────────────────────── */}
       <div className="dhv-stats">
         {[
-          { label: 'Enrolled', value: String(summary.overviewMetrics[0]?.value ?? COURSE_CARDS.length), accent: true },
+          { label: 'Enrolled', value: String(summary.overviewMetrics[0]?.value ?? filteredCourses.length), accent: true },
           { label: 'Completed', value: summary.overviewMetrics[1]?.value ?? '2', accent: true },
-          { label: 'In Progress', value: summary.overviewMetrics[2]?.value ?? '4', accent: false },
+          { label: 'In Progress', value: summary.overviewMetrics[2]?.value ?? String(filteredCourses.length), accent: false },
           { label: 'Certificates', value: summary.overviewMetrics[3]?.value ?? '1', accent: true },
         ].map((s) => (
           <div key={s.label} className="dhv-stat-card">
@@ -85,7 +87,7 @@ export function DesktopHomeView() {
 
       {/* ── Course Grid ──────────────────────────────────────── */}
       <div className="dhv-grid">
-        {COURSE_CARDS.map((c) => <CourseCard key={c.id} course={c} />)}
+        {filteredCourses.map((c) => <CourseCard key={c.id} course={c} />)}
       </div>
     </div>
   );
