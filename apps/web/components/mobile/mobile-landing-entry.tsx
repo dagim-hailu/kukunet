@@ -11,25 +11,25 @@ export function MobileLandingEntry() {
         <div className="flex items-center justify-between mb-10">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
-              <span className="text-lg font-bold text-emerald-500">K</span>
+              <span className="text-xl font-bold text-emerald-500">K</span>
             </div>
             <div>
-              <p className="text-sm font-bold tracking-wide">KUKUNET Digital</p>
-              <p className="text-[10px] text-muted">Mobile learning app</p>
+              <p className="text-base font-bold tracking-wide">KUKUNET Digital</p>
+              <p className="text-[13px] text-muted">Mobile learning app</p>
             </div>
           </div>
           <ThemeToggle />
         </div>
 
         <div className="mb-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold text-emerald-500 mb-4">
-            <Sparkles className="w-3 h-3" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-[13px] font-semibold text-emerald-500 mb-4">
+            <Sparkles className="w-4 h-4" />
             PWA ready · Installable
           </div>
-          <h1 className="text-3xl font-bold tracking-tight leading-tight">
+          <h1 className="text-4xl font-bold tracking-tight leading-tight">
             Learn anywhere with your personalized track
           </h1>
-          <p className="text-sm text-muted mt-3 leading-relaxed">
+          <p className="text-base text-muted mt-3 leading-relaxed">
             Sign in to access Home, Track, Progress, and Profile — the full mobile experience from the reference designs.
           </p>
         </div>
@@ -40,8 +40,8 @@ export function MobileLandingEntry() {
               key={tab}
               className="rounded-2xl border border-[var(--border)] bg-[var(--bg-2)] px-4 py-3 text-center shadow-sm"
             >
-              <BookOpen className="w-4 h-4 text-emerald-500 mx-auto mb-1.5" />
-              <span className="text-[10px] font-semibold text-[var(--text-2)]">{tab}</span>
+              <BookOpen className="w-5 h-5 text-emerald-500 mx-auto mb-1.5" />
+              <span className="text-[13px] font-semibold text-[var(--text-2)]">{tab}</span>
             </div>
           ))}
         </div>
@@ -49,18 +49,18 @@ export function MobileLandingEntry() {
         <div className="mt-auto space-y-3">
           <Link
             href="/login"
-            className="flex items-center justify-center gap-2 w-full bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold py-3.5 rounded-xl shadow-lg shadow-emerald-600/20 transition"
+            className="flex items-center justify-center gap-2 w-full bg-emerald-600 hover:bg-emerald-500 text-white text-base font-bold py-3.5 rounded-xl shadow-lg shadow-emerald-600/20 transition"
           >
             Sign In
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-5 h-5" />
           </Link>
           <Link
             href="/register"
-            className="flex items-center justify-center w-full bg-[var(--bg-2)] border border-[var(--border)] text-[var(--text)] text-sm font-bold py-3.5 rounded-xl hover:bg-[var(--bg-3)] transition"
+            className="flex items-center justify-center w-full bg-[var(--bg-2)] border border-[var(--border)] text-[var(--text)] text-base font-bold py-3.5 rounded-xl hover:bg-[var(--bg-3)] transition"
           >
             Create Account
           </Link>
-          <p className="text-center text-[10px] text-muted pt-1">
+          <p className="text-center text-[13px] text-muted pt-1">
             After signing in, you&apos;ll see the mobile dashboard with bottom navigation.
           </p>
         </div>

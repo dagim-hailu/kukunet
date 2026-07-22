@@ -53,7 +53,7 @@ export function MobileBottomNav() {
             >
               {/* Active tab background highlight */}
               {active && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-1 bg-emerald-500 rounded-b-full" />
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-1 bg-emerald-500 rounded-b-full" />
               )}
 
               <div
@@ -62,14 +62,14 @@ export function MobileBottomNav() {
                 }`}
               >
                 <Icon
-                  className={`w-5 h-5 ${
+                  className={`w-7 h-7 ${
                     active ? 'stroke-[3px]' : 'stroke-[2px]'
                   }`}
                 />
               </div>
 
               <span
-                className={`text-[10px] font-semibold transition-colors duration-150 ${
+                className={`text-[13px] font-semibold transition-colors duration-150 ${
                   active ? 'text-emerald-500' : 'text-neutral-500'
                 }`}
               >
