@@ -1,6 +1,7 @@
 'use client';
 
 import { Share2 } from 'lucide-react';
+import { ThemeToggle } from '../theme-toggle';
 
 const weeklyBars: Array<{
   label: string;
@@ -33,14 +34,17 @@ export function MobileProgressView() {
             <h1 className="text-2xl font-bold tracking-wide">Progress</h1>
             <p className="text-xs text-muted mt-1">Your learning metrics at a glance</p>
           </div>
-          <button
-            type="button"
-            onClick={() => alert('Sharing progress report...')}
-            className="p-1 hover:opacity-80 transition"
-            aria-label="Share metrics"
-          >
-            <Share2 className="w-5 h-5 text-neutral-400" />
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => alert('Sharing progress report...')}
+              className="p-1 hover:opacity-80 transition"
+              aria-label="Share metrics"
+            >
+              <Share2 className="w-5 h-5 text-neutral-400" />
+            </button>
+          </div>
         </div>
 
         <div className="bg-dashboard-card border border-neutral-800/60 rounded-2xl p-4 mb-6 flex-shrink-0">

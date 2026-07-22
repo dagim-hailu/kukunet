@@ -10,6 +10,7 @@ import {
   Palette,
   Terminal,
 } from 'lucide-react';
+import { ThemeToggle } from '../theme-toggle';
 
 const courses = [
   {
@@ -65,14 +66,17 @@ export function MobileTrackView() {
             <h1 className="text-2xl font-bold tracking-wide">Track</h1>
             <p className="text-xs text-muted mt-1">Full stack track · 25% done</p>
           </div>
-          <button
-            type="button"
-            onClick={() => alert('Editing track settings...')}
-            className="p-1 hover:opacity-80 transition"
-            aria-label="Edit track"
-          >
-            <Edit3 className="w-5 h-5 text-neutral-400" />
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => alert('Editing track settings...')}
+              className="p-1 hover:opacity-80 transition"
+              aria-label="Edit track"
+            >
+              <Edit3 className="w-5 h-5 text-neutral-400" />
+            </button>
+          </div>
         </div>
 
         <div className="flex gap-6 border-b border-neutral-800 mb-5 text-sm flex-shrink-0">

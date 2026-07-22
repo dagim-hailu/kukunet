@@ -2,19 +2,23 @@
 
 import Link from 'next/link';
 import { ArrowRight, BookOpen, Sparkles } from 'lucide-react';
+import { ThemeToggle } from '../theme-toggle';
 
 export function MobileLandingEntry() {
   return (
     <div className="min-h-[100dvh] bg-[var(--bg)] text-[var(--text)] flex flex-col transition-colors duration-300">
       <div className="flex-1 flex flex-col px-6 pt-12 pb-8">
-        <div className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
-            <span className="text-lg font-bold text-emerald-500">K</span>
+        <div className="flex items-center justify-between mb-10">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
+              <span className="text-lg font-bold text-emerald-500">K</span>
+            </div>
+            <div>
+              <p className="text-sm font-bold tracking-wide">KUKUNET Digital</p>
+              <p className="text-[10px] text-muted">Mobile learning app</p>
+            </div>
           </div>
-          <div>
-            <p className="text-sm font-bold tracking-wide">KUKUNET Digital</p>
-            <p className="text-[10px] text-muted">Mobile learning app</p>
-          </div>
+          <ThemeToggle />
         </div>
 
         <div className="mb-8">

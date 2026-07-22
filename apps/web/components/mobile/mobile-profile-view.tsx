@@ -10,6 +10,7 @@ import {
   User,
 } from 'lucide-react';
 import { useDashboard } from '../../app/dashboard/layout';
+import { ThemeToggle } from '../theme-toggle';
 
 export function MobileProfileView() {
   const { profile, handleLogout, isLoggingOut } = useDashboard();
@@ -23,14 +24,17 @@ export function MobileProfileView() {
             <h1 className="text-2xl font-bold tracking-wide">Profile</h1>
             <p className="text-xs text-muted mt-1">Manage your account settings</p>
           </div>
-          <button
-            type="button"
-            onClick={() => alert('Settings configuration is managed from the desktop sidebar workspace panels.')}
-            className="p-1 hover:opacity-80 transition"
-            aria-label="Settings"
-          >
-            <Settings className="w-5 h-5 text-neutral-400" />
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => alert('Settings configuration is managed from the desktop sidebar workspace panels.')}
+              className="p-1 hover:opacity-80 transition"
+              aria-label="Settings"
+            >
+              <Settings className="w-5 h-5 text-neutral-400" />
+            </button>
+          </div>
         </div>
 
         <div className="flex flex-col items-center text-center mb-6 flex-shrink-0">

@@ -18,6 +18,7 @@ import {
   Video,
 } from 'lucide-react';
 import { useState } from 'react';
+import { ThemeToggle } from '../theme-toggle';
 
 const categories = [
   { label: 'Category', icon: LayoutGrid, bg: 'bg-emerald-950/40', border: 'border-emerald-900/30', color: 'text-emerald-400' },
@@ -46,14 +47,17 @@ export function MobileHomeView() {
             <h1 className="text-2xl font-bold tracking-wide">Home</h1>
             <p className="text-xs text-muted mt-1">Pick up where you left off</p>
           </div>
-          <button
-            type="button"
-            className="p-1 hover:opacity-80 transition"
-            onClick={() => alert('Notifications: All caught up.')}
-            aria-label="Notifications"
-          >
-            <Bell className="w-6 h-6 text-emerald-500 fill-emerald-500/10" />
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              type="button"
+              className="p-1 hover:opacity-80 transition"
+              onClick={() => alert('Notifications: All caught up.')}
+              aria-label="Notifications"
+            >
+              <Bell className="w-6 h-6 text-emerald-500 fill-emerald-500/10" />
+            </button>
+          </div>
         </div>
 
         <div className="flex items-center gap-3 bg-dashboard-card border border-neutral-800 rounded-xl px-4 py-3 mb-5 flex-shrink-0">
