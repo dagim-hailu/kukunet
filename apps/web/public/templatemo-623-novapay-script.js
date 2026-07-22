@@ -26,9 +26,10 @@ if(window.__novapayScriptRan)return;
 window.__novapayScriptRan=true;
 
 const tickerData=[
-  {sym:'KUKUNET',price:'digital',chg:'Empowering agriculture through digital innovation, MoA leads the way.',up:true},
-    {sym:'KUKUNET',price:'digital',chg:'Empowering agriculture through digital innovation, MoA leads the way.',up:true},
-
+  {sym:'KUKUNET',price:'digital',chg:'Empowering agriculture through digital innovation in Ethiopia.',up:true},
+  {sym:'KUKUNET',price:'digital',chg:'Building custom software solutions for business growth.',up:true},
+  {sym:'KUKUNET',price:'digital',chg:'Training the next generation of tech talent in Africa.',up:true},
+  {sym:'KUKUNET',price:'digital',chg:'Consulting services to drive digital transformation.',up:true},
 ];
 const track=document.getElementById('tickerTrack');
 [...tickerData,...tickerData].forEach(t=>{
@@ -95,10 +96,10 @@ function switchPeriod(btn,period){
   document.querySelectorAll('.dp-period-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   const configs={
-    '7d':{val:'$284,920',change:'▲ +$12,840 (4.72%) today'},
-    '1m':{val:'$284,920',change:'▲ +$74,920 (35.7%) month'},
-    '3m':{val:'$284,920',change:'▲ +$104,920 (58.3%) quarter'},
-    '1y':{val:'$284,920',change:'▲ +$164,920 (137.4%) year'},
+    '7d':{val:'10+',change:'Systems Completed'},
+    '1m':{val:'10+',change:'Systems Completed'},
+    '3m':{val:'10+',change:'Systems Completed'},
+    '1y':{val:'10+',change:'Systems Completed'},
   };
   const c=configs[period];
   document.getElementById('dpChartVal').textContent=c.val;
@@ -111,7 +112,7 @@ document.getElementById('sparkline').innerHTML=sparkBars.map(h=>`<div class="pm-
 const stickyCards=document.querySelectorAll('.sticky-card');
 const panelViews=document.querySelectorAll('.panel-view');
 const panelLabel=document.getElementById('panelLabel');
-const panelLabels=['Transfers','Analytics','Multi-currency','Security'];
+const panelLabels=['Software Dev','Training','Consulting','Values'];
 stickyCards.forEach((card,i)=>{
   card.addEventListener('click',()=>{
     stickyCards.forEach(c=>c.classList.remove('active'));
@@ -187,13 +188,13 @@ function togglePricing(){
 }
 
 const faqs=[
-  {q:'How quickly can I start sending payments?',a:'You can be up and running in under 10 minutes. Create your account, verify your identity, and make your first transfer — no paperwork, no waiting.'},
-  {q:'What are the transaction fees?',a:'Starter accounts have zero fees up to $10K monthly volume. Growth and Enterprise plans have volume-based pricing starting at 0.5% per transaction, with no monthly minimums or hidden charges.'},
-  {q:'Which countries and currencies do you support?',a:'NovaPay supports payments in 190+ countries and holds balances in 35+ currencies including USD, EUR, GBP, JPY, SGD, AUD, CAD, CHF, and more. New currencies are added quarterly.'},
-  {q:'How does NovaPay keep my money safe?',a:"Your funds are held in regulated custodian accounts, fully segregated from NovaPay's operating capital. We're SOC 2 Type II certified, PCI DSS Level 1 compliant, and use 256-bit AES encryption on all data."},
-  {q:'Can I integrate NovaPay with my existing tools?',a:'Yes — our REST API and webhooks integrate with Xero, QuickBooks, Stripe, Shopify, and 200+ other platforms. We also offer native plugins for major e-commerce and accounting tools.'},
-  {q:'What support is available?',a:'Starter plans include email support with 24-hour response times. Growth plans get priority chat support. Enterprise clients receive a dedicated account manager and 24/7 phone support with guaranteed SLAs.'},
-  {q:'Can I use NovaPay for payroll?',a:'Absolutely. Our batch payment feature lets you pay hundreds of employees or contractors in multiple currencies simultaneously, with full audit logs and auto-generated payment reports.'},
+  {q:'What services does Kukunet Digital offer?',a:'We offer three main services: Software Development (custom solutions, web/mobile apps), Training (coding programs for kids and professionals), and Consulting (digital transformation, IT advisory).'},
+  {q:'When was Kukunet Digital established?',a:'Kukunet Digital is a private limited company established in 2020 in Ethiopia, with a diverse team of 8 expert members.'},
+  {q:'What agricultural solutions do you provide?',a:'We have built systems like Fertilizer Management System, Agricultural Inputs Supply System, and Data Digitalization for the Ministry of Agriculture to enhance productivity and decision-making.'},
+  {q:'How do you ensure data security?',a:'We use SSL/TLS encryption, role-based access control, 2FA, and protection against SQL injection, XSS, and DDoS attacks. We also recommend regular security audits.'},
+  {q:'Can you build custom software for my business?',a:'Yes! We specialize in creating tailored, cost-effective solutions that fit your specific business needs, with intuitive user interfaces and advanced technology.'},
+  {q:'What is your training program for kids?',a:'We offer coding and tech programs designed for children, aiming to train over 1000+ kids in the next 5 years to promote digital literacy and STEM skills in Ethiopia.'},
+  {q:'How do I get started with Kukunet Digital?',a:'Click the "Get Started" button on our website to register, or contact us to discuss your project needs and schedule a consultation.'},
 ];
 const faqList=document.getElementById('faqList');
 faqs.forEach((f,i)=>{
@@ -220,12 +221,10 @@ function toggleAllFaq(){
 }
 
 const testimonials=[
-  {q:'NovaPay cut our international settlement time from 3 days to under 2 seconds. It completely changed how we operate.',name:'Sarah Kim',role:'CFO at Hive Commerce',init:'SK'},
-  {q:"The multi-currency accounts saved us over $40K in FX fees last year. The rate transparency alone is worth it.",name:'James Adler',role:'Finance Director, Nomad Labs',init:'JA'},
-  {q:'Finally a fintech platform that doesn\'t feel like it was built in 2015. The dashboard is genuinely beautiful and fast.',name:'Priya Mehta',role:'Head of Ops, Stackflow',init:'PM'},
-  {q:'Migrated from our bank\'s business account in a weekend. The API docs are exceptional — engineers loved it.',name:'Tom Brennan',role:'CTO at Vaulted',init:'TB'},
-  {q:'The fraud detection caught three suspicious transactions before they hit our account. Incredible peace of mind.',name:'Liu Wei',role:'Founder, CloudMint',init:'LW'},
-  {q:'Our accountants love the automated reconciliation. What took 8 hours a month now takes 20 minutes.',name:'Amara Osei',role:'Controller, Drift Studio',init:'AO'},
+  {q:'Kukunet Digital transformed our agricultural operations with their custom Fertilizer Management System. Highly recommended!',name:'Ministry of Agriculture',role:'Ethiopia',init:'MoA'},
+  {q:"Their training program for our kids was amazing — our daughter now loves coding and problem-solving.",name:'Abebe Bekele',role:'Parent, Addis Ababa',init:'AB'},
+  {q:'Professional, innovative, and cost-effective solutions that perfectly fit our business needs.',name:'Selam Tekle',role:'CEO, Tech Startup',init:'ST'},
+  {q:'The consulting team helped us digitalize our processes and boost productivity significantly.',name:'Daniel Mekonnen',role:'Operations Manager',init:'DM'},
 ];
 const tt=document.getElementById('testiTrack');
 [...testimonials,...testimonials].forEach(t=>{

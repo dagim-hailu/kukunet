@@ -33,19 +33,19 @@ export function LandingPage() {
           <div className="nav-logo-mark">
             <img width="30" src="/images/kukunet mini.png" alt="KUKUNET digital" />
           </div>
-          KUKUNET digital
+          KUKUNET DIGITAL
         </a>
         <div className="nav-links">
-          <a href="#features">Features</a>
-          <a href="#dashboard">Platform</a>
-          <a href="#pricing">Pricing</a>
+          <a href="#services">Services</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#why-choose-us">Why Us</a>
           <a href="#security">Security</a>
           <a href="#faq">FAQ</a>
         </div>
         <div className="nav-cta">
           <ThemeToggle />
           <Link href="/login" className="btn-ghost">Sign in</Link>
-          <Link href="/register" className="btn-primary">Register Now</Link>
+          <Link href="/register" className="btn-primary">Get Started</Link>
         </div>
         <button className="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -54,9 +54,9 @@ export function LandingPage() {
 
       {/* Mobile Menu */}
       <div className="mobile-menu" id="mobileMenu">
-        <a href="#features">Features</a>
-        <a href="#dashboard">Platform</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#services">Services</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#why-choose-us">Why Us</a>
         <a href="#security">Security</a>
         <a href="#faq">FAQ</a>
         <div className="flex items-center justify-between pt-2">
@@ -65,7 +65,7 @@ export function LandingPage() {
         </div>
         <div className="m-btns">
           <Link href="/login" className="btn-ghost">Sign in</Link>
-          <Link href="/register" className="btn-primary">Get started free</Link>
+          <Link href="/register" className="btn-primary">Get Started</Link>
         </div>
       </div>
 
@@ -74,22 +74,22 @@ export function LandingPage() {
         <div className="hero-content silk-reveal-left">
           <div className="hero-badge">
             <span className="badge-dot"></span>
-            Build Your Vision with the KUKUNET Team.
+            Welcome to Kukunet Digital
           </div>
-          <h1>Your One-Stop<br />Solution for<br /><span>Digital Innovation</span></h1>
-          <p className="hero-sub">Welcome to KUKUNET digital. We are the gateway to inspiring and educational online learning experiences. With a variety of courses presented interactively and easily accessible.</p>
+          <h1>Driving Digital<br />Transformation in<br /><span>Ethiopia & Beyond</span></h1>
+          <p className="hero-sub">Kukunet Digital is a private limited company established in 2020 with a diverse and balanced team of 8 members. We provide innovative, cost-effective solutions tailored to business needs, combining intuitive, user-friendly software with advanced technology to simplify and digitalize business processes, optimize resources, and enhance performance.</p>
           <div className="hero-btns">
             <Link href="/register" className="btn-hero">
-              Start for free
+              Get Started
               <svg viewBox="0 0 16 16"><line x1="3" y1="8" x2="13" y2="8" /><polyline points="9,4 13,8 9,12" /></svg>
             </Link>
-            <a href="#dashboard" className="btn-outline">See it in action</a>
+            <a href="#solutions" className="btn-outline">Explore Solutions</a>
           </div>
           <div className="hero-trust">
             <div className="hero-avatars">
-              <span>AK</span><span>MR</span><span>JL</span><span>+</span>
+              <span>SD</span><span>SO</span><span>IN</span><span>+</span>
             </div>
-            <p className="hero-trust-text"><strong>12,000+</strong> businesses trust KUKUNET digital</p>
+            <p className="hero-trust-text"><strong>Trusted by businesses across Ethiopia</strong></p>
           </div>
         </div>
         <div className="hero-visual silk-reveal-right">
@@ -97,13 +97,11 @@ export function LandingPage() {
             <div className="float-badge-icon" style={{ background: 'rgba(61,204,142,.12)' }}>
               <svg width="18" height="18" fill="none" stroke="#3DCC8E" strokeWidth="2" strokeLinecap="round" viewBox="0 0 18 18"><polyline points="2,12 7,7 11,10 16,4" /></svg>
             </div>
-
           </div>
           <div className="float-badge fb-right">
-            <div className="float-badge-icon" style={{ background: 'rgba(61,204,142,.12)' }}>
-              <svg width="18" height="18" fill="none" stroke="#3DCC8E" strokeWidth="2" strokeLinecap="round" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" /><polyline points="9,5 9,9 12,11" /></svg>
+            <div className="float-badge-icon" style={{ background: 'rgba(74,158,232,.12)' }}>
+              <svg width="18" height="18" fill="none" stroke="#4A9EE8" strokeWidth="2" strokeLinecap="round" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7" /><polyline points="9,5 9,9 12,11" /></svg>
             </div>
-
           </div>
           <div className="dash-card">
             <div className="dash-topbar">
@@ -118,33 +116,33 @@ export function LandingPage() {
             <div className="dash-body">
               <div className="dash-stats">
                 <div className="dash-stat">
-                  <div className="dash-stat-label">Completed Websites</div>
-                  <div className="dash-stat-val">30+</div>
-                  <div className="dash-stat-change" style={{ color: 'var(--green)' }}>+2.4% today</div>
+                  <div className="dash-stat-label">Projects Completed</div>
+                  <div className="dash-stat-val">10+</div>
+                  <div className="dash-stat-change" style={{ color: 'var(--green)' }}>Agriculture & beyond</div>
                 </div>
                 <div className="dash-stat">
-                  <div className="dash-stat-label">Under Development</div>
-                  <div className="dash-stat-val">12+</div>
-                  <div className="dash-stat-change" style={{ color: 'var(--text3)' }}>This month</div>
+                  <div className="dash-stat-label">Team Members</div>
+                  <div className="dash-stat-val">8</div>
+                  <div className="dash-stat-change" style={{ color: 'var(--text3)' }}>Diverse experts</div>
                 </div>
                 <div className="dash-stat">
-                  <div className="dash-stat-label">Total Student</div>
-                  <div className="dash-stat-val">400+</div>
-                  <div className="dash-stat-change" style={{ color: 'var(--green)' }}>+18% MoM</div>
+                  <div className="dash-stat-label">Years Active</div>
+                  <div className="dash-stat-val">4+</div>
+                  <div className="dash-stat-change" style={{ color: 'var(--green)' }}>Established 2020</div>
                 </div>
               </div>
               <div className="chart-wrap">
                 <div className="chart-head">
-                  <span className="chart-head-title">Course Duration — 7 Days</span>
-                  <span className="chart-badge">+12.4%</span>
+                  <span className="chart-head-title">System Utilization</span>
+                  <span className="chart-badge">Growing</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', height: '64px' }}>
-                  <div style={{ flex: 1, background: 'rgba(61,204,142,.18)', borderRadius: '3px 3px 0 0', height: '55%', borderTop: '2px solid var(--sky)' }}></div>
-                  <div style={{ flex: 1, background: 'rgba(61,204,142,.18)', borderRadius: '3px 3px 0 0', height: '72%', borderTop: '2px solid var(--sky)' }}></div>
-                  <div style={{ flex: 1, background: 'rgba(61,204,142,.18)', borderRadius: '3px 3px 0 0', height: '48%', borderTop: '2px solid var(--sky)' }}></div>
-                  <div style={{ flex: 1, background: 'rgba(61,204,142,.18)', borderRadius: '3px 3px 0 0', height: '88%', borderTop: '2px solid var(--sky)' }}></div>
-                  <div style={{ flex: 1, background: 'rgba(61,204,142,.18)', borderRadius: '3px 3px 0 0', height: '65%', borderTop: '2px solid var(--sky)' }}></div>
-                  <div style={{ flex: 1, background: 'rgba(61,204,142,.25)', borderRadius: '3px 3px 0 0', height: '92%', borderTop: '2px solid var(--sky2)' }}></div>
+                  <div style={{ flex: 1, background: 'rgba(61,204,142,.18)', borderRadius: '3px 3px 0 0', height: '60%', borderTop: '2px solid var(--sky)' }}></div>
+                  <div style={{ flex: 1, background: 'rgba(61,204,142,.18)', borderRadius: '3px 3px 0 0', height: '75%', borderTop: '2px solid var(--sky)' }}></div>
+                  <div style={{ flex: 1, background: 'rgba(61,204,142,.18)', borderRadius: '3px 3px 0 0', height: '50%', borderTop: '2px solid var(--sky)' }}></div>
+                  <div style={{ flex: 1, background: 'rgba(61,204,142,.18)', borderRadius: '3px 3px 0 0', height: '90%', borderTop: '2px solid var(--sky)' }}></div>
+                  <div style={{ flex: 1, background: 'rgba(61,204,142,.18)', borderRadius: '3px 3px 0 0', height: '70%', borderTop: '2px solid var(--sky)' }}></div>
+                  <div style={{ flex: 1, background: 'rgba(61,204,142,.25)', borderRadius: '3px 3px 0 0', height: '95%', borderTop: '2px solid var(--sky2)' }}></div>
                   <div style={{ flex: 1, background: 'rgba(61,204,142,.35)', borderRadius: '3px 3px 0 0', height: '100%', borderTop: '2px solid var(--sky2)' }}></div>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
@@ -159,36 +157,28 @@ export function LandingPage() {
               </div>
               <div className="tx-list">
                 <div className="tx-item">
-                  <div className="tx-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#3DCC8E' }}>HTML</div>
+                  <div className="tx-icon" style={{ background: 'rgba(74,158,232,.12)', color: '#4A9EE8' }}>Ag</div>
                   <div className="tx-info">
-                    <div className="tx-name">HTML, CSS & JavaScript Course</div>
-                    <div className="tx-date">Today, 9:14 AM</div>
+                    <div className="tx-name">Fertilizer Management System</div>
+                    <div className="tx-date">Active</div>
                   </div>
-                  <div className="tx-amount" style={{ color: 'var(--green)' }}>+42</div>
+                  <div className="tx-amount" style={{ color: 'var(--green)' }}>Live</div>
                 </div>
                 <div className="tx-item">
-                  <div className="tx-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#3DCC8E' }}>GD</div>
+                  <div className="tx-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#3DCC8E' }}>Tr</div>
                   <div className="tx-info">
-                    <div className="tx-name">Graphic Design Course</div>
-                    <div className="tx-date">Today, 9:14 AM</div>
+                    <div className="tx-name">Training Management System</div>
+                    <div className="tx-date">Active</div>
                   </div>
-                  <div className="tx-amount" style={{ color: 'var(--green)' }}>+38</div>
+                  <div className="tx-amount" style={{ color: 'var(--green)' }}>Live</div>
                 </div>
                 <div className="tx-item">
-                  <div className="tx-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#3DCC8E' }}>Prog</div>
+                  <div className="tx-icon" style={{ background: 'rgba(136,136,248,.12)', color: '#8888F8' }}>AI</div>
                   <div className="tx-info">
-                    <div className="tx-name">Python Programming Course</div>
-                    <div className="tx-date">Today, 9:14 AM</div>
+                    <div className="tx-name">AIISS — Investment Promotion</div>
+                    <div className="tx-date">Active</div>
                   </div>
-                  <div className="tx-amount" style={{ color: 'var(--green)' }}>+61</div>
-                </div>
-                <div className="tx-item">
-                  <div className="tx-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#3DCC8E' }}>AI</div>
-                  <div className="tx-info">
-                    <div className="tx-name">AI Prompt Engineering Course</div>
-                    <div className="tx-date">Yesterday, 3:40 PM</div>
-                  </div>
-                  <div className="tx-amount" style={{ color: 'var(--green)' }}>+2</div>
+                  <div className="tx-amount" style={{ color: 'var(--green)' }}>Live</div>
                 </div>
               </div>
             </div>
@@ -210,58 +200,58 @@ export function LandingPage() {
           <div className="stat-icon">
             <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>
           </div>
-          <div className="stat-num" data-target="25" data-prefix="" data-suffix="+">0</div>
-          <div className="stat-label">Projects Completed</div>
-          <div className="stat-bar-wrap"><div className="stat-bar" style={{ width: '0%' }} data-width="92%"></div></div>
+          <div className="stat-num" data-target="10" data-suffix="+">0</div>
+          <div className="stat-label">Completed Systems</div>
+          <div className="stat-bar-wrap"><div className="stat-bar" style={{ width: '0%' }} data-width="90%"></div></div>
           <div className="stat-trend" style={{ color: 'var(--green)' }}>
             <svg viewBox="0 0 24 24"><polyline points="18,15 12,9 6,15" /></svg>
-             ↑ 8 delivered this year
+             Fertilizer, Training, AIISS & more
           </div>
         </div>
         <div className="stat-block">
           <div className="stat-icon">
             <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
           </div>
-          <div className="stat-num" data-target="10" data-suffix="+">0</div>
-          <div className="stat-label">Summer Courses Completed</div>
-          <div className="stat-bar-wrap"><div className="stat-bar" style={{ width: '0%', background: '#3DCC8E' }} data-width="76%"></div></div>
+          <div className="stat-num" data-target="8" data-suffix="">0</div>
+          <div className="stat-label">Expert Team Members</div>
+          <div className="stat-bar-wrap"><div className="stat-bar" style={{ width: '0%', background: '#3DCC8E' }} data-width="80%"></div></div>
           <div className="stat-trend" style={{ color: 'var(--green)' }}>
             <svg viewBox="0 0 24 24"><polyline points="18,15 12,9 6,15" /></svg>
-             ↑ 3 certifications earned
+            Diverse & balanced team
           </div>
         </div>
         <div className="stat-block">
           <div className="stat-icon" style={{ background: 'rgba(61,204,142,.1)', borderColor: 'rgba(61,204,142,.15)' }}>
             <svg viewBox="0 0 24 24" style={{ stroke: 'var(--green)' }}><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22,4 12,14.01 9,11.01" /></svg>
           </div>
-          <div className="stat-num" data-target="95.98" data-suffix="%" data-decimal="2">0</div>
-          <div className="stat-label">Project Success Rate</div>
-          <div className="stat-bar-wrap"><div className="stat-bar" style={{ width: '0%', background: '#3DCC8E' }} data-width="99.98%"></div></div>
+          <div className="stat-num" data-target="2020" data-suffix="">0</div>
+          <div className="stat-label">Year Established</div>
+          <div className="stat-bar-wrap"><div className="stat-bar" style={{ width: '0%', background: '#3DCC8E' }} data-width="100%"></div></div>
           <div className="stat-trend" style={{ color: 'var(--green)' }}>
             <svg viewBox="0 0 24 24"><polyline points="18,15 12,9 6,15" /></svg>
-             ✓ High-quality deliverables
+             4+ years of excellence
           </div>
         </div>
         <div className="stat-block">
           <div className="stat-icon" style={{ background: 'rgba(136,136,248,.1)', borderColor: 'rgba(136,136,248,.15)' }}>
             <svg viewBox="0 0 24 24" style={{ stroke: '#8888F8' }}><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
           </div>
-          <div className="stat-num" data-target="500" data-suffix="+">0</div>
-          <div className="stat-label">Hours of Coding & Learning</div>
-          <div className="stat-bar-wrap"><div className="stat-bar" style={{ width: '0%', background: '#8888F8' }} data-width="88%"></div></div>
+          <div className="stat-num" data-target="1000" data-suffix="+">0</div>
+          <div className="stat-label">Kids to Train in 5 Years</div>
+          <div className="stat-bar-wrap"><div className="stat-bar" style={{ width: '0%', background: '#8888F8' }} data-width="70%"></div></div>
           <div className="stat-trend" style={{ color: '#8888F8' }}>
             <svg viewBox="0 0 24 24"><polyline points="18,15 12,9 6,15" /></svg>
-             ↑ Continuous skill development
+             Building digital skills for the future
           </div>
         </div>
       </section>
 
-      {/* Features — Sticky Stack */}
-      <section className="features-section" id="features">
+      {/* Services */}
+      <section className="features-section" id="services">
         <div className="features-header silk-reveal">
-          <div className="section-tag">Platform features</div>
-          <h2 className="section-title">Everything your business needs</h2>
-          <p className="section-sub">One platform to send, receive, track, and grow. No switching between tools, no integration headaches.</p>
+          <div className="section-tag">Our Services</div>
+          <h2 className="section-title">What We Offer</h2>
+          <p className="section-sub">Comprehensive solutions tailored to your business needs, from custom development to training and consulting.</p>
         </div>
         <div className="sticky-layout">
           <div className="sticky-cards">
@@ -270,12 +260,12 @@ export function LandingPage() {
               <div className="sticky-card-icon">
                 <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg>
               </div>
-              <h3>Instant transfers</h3>
-              <p>Move money globally in real-time. Send to bank accounts, wallets, or cards in 190+ countries with sub-second settlement and zero hidden fees.</p>
+              <h3>Software Development</h3>
+              <p>Our team of experienced developers crafts custom software solutions that align with client objectives, leveraging the latest technologies and best practices to drive efficiency and productivity.</p>
               <div className="sticky-card-pills">
-                <span className="sc-pill">Real-time</span>
-                <span className="sc-pill">190+ countries</span>
-                <span className="sc-pill">Zero fees</span>
+                <span className="sc-pill">Custom Solutions</span>
+                <span className="sc-pill">Latest Tech</span>
+                <span className="sc-pill">Best Practices</span>
               </div>
             </div>
 
@@ -283,12 +273,12 @@ export function LandingPage() {
               <div className="sticky-card-icon">
                 <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
               </div>
-              <h3>Smart analytics</h3>
-              <p>AI-powered dashboards that surface what matters. Cashflow forecasting, anomaly detection, and custom reports built for finance teams.</p>
+              <h3>Training Programs</h3>
+              <p>We provide comprehensive training programs designed to enhance skills and knowledge in software development, equipping individuals and teams with the tools they need to excel in the rapidly evolving tech industry. We're committed to training over 1,000 kids in coding within the next 5 years!</p>
               <div className="sticky-card-pills">
-                <span className="sc-pill">AI forecasting</span>
-                <span className="sc-pill">Anomaly alerts</span>
-                <span className="sc-pill">Custom reports</span>
+                <span className="sc-pill">Skill Development</span>
+                <span className="sc-pill">Kids Coding</span>
+                <span className="sc-pill">Digital Literacy</span>
               </div>
             </div>
 
@@ -296,12 +286,12 @@ export function LandingPage() {
               <div className="sticky-card-icon">
                 <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" /><line x1="2" y1="10" x2="22" y2="10" /></svg>
               </div>
-              <h3>Multi-currency accounts</h3>
-              <p>Hold, convert, and pay in 35+ currencies at interbank rates. Lock rates in advance and eliminate FX exposure with our hedging tools.</p>
+              <h3>Consulting Services</h3>
+              <p>Our consultancy services offer strategic guidance and expert advice to help businesses navigate complex technological challenges, optimize processes, and achieve their goals.</p>
               <div className="sticky-card-pills">
-                <span className="sc-pill">35+ currencies</span>
-                <span className="sc-pill">Interbank rates</span>
-                <span className="sc-pill">FX hedging</span>
+                <span className="sc-pill">Strategic Guidance</span>
+                <span className="sc-pill">Process Optimization</span>
+                <span className="sc-pill">Expert Advice</span>
               </div>
             </div>
 
@@ -309,12 +299,12 @@ export function LandingPage() {
               <div className="sticky-card-icon">
                 <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
               </div>
-              <h3>Enterprise security</h3>
-              <p>Bank-grade encryption, SOC 2 Type II certified, and AI-driven fraud detection that blocks threats before they happen. Your money, protected 24/7.</p>
+              <h3>Our Values</h3>
+              <p>Innovation, Quality, Collaboration, and Integrity are at the heart of everything we do.</p>
               <div className="sticky-card-pills">
-                <span className="sc-pill">SOC 2</span>
-                <span className="sc-pill">AI fraud detection</span>
-                <span className="sc-pill">256-bit AES</span>
+                <span className="sc-pill">Innovation</span>
+                <span className="sc-pill">Quality</span>
+                <span className="sc-pill">Integrity</span>
               </div>
             </div>
 
@@ -328,156 +318,102 @@ export function LandingPage() {
                   <span style={{ background: '#F0A030' }}></span>
                   <span style={{ background: '#3DCC8E' }}></span>
                 </div>
-                <span style={{ fontSize: '11px', color: 'var(--text3)', marginLeft: '8px' }} id="panelLabel">Transfers</span>
+                <span style={{ fontSize: '11px', color: 'var(--text3)', marginLeft: '8px' }} id="panelLabel">Software Development</span>
               </div>
               <div className="panel-content">
 
-                {/* Panel 0: Transfers */}
+                {/* Panel 0: Software Development */}
                 <div className="panel-view active" id="panel-0">
                   <div className="pm-row">
                     <div className="pm-card">
-                      <div className="pm-label">Sent today</div>
-                      <div className="pm-val">$24,800</div>
-                      <div className="pm-change" style={{ color: 'var(--green)' }}>+8 transfers</div>
+                      <div className="pm-label">Custom Apps</div>
+                      <div className="pm-val">5+</div>
+                      <div className="pm-change" style={{ color: 'var(--green)' }}>Delivered</div>
                     </div>
                     <div className="pm-card">
-                      <div className="pm-label">Avg. speed</div>
-                      <div className="pm-val">1.2s</div>
-                      <div className="pm-change" style={{ color: 'var(--text3)' }}>Settlement</div>
+                      <div className="pm-label">Agriculture Systems</div>
+                      <div className="pm-val">3+</div>
+                      <div className="pm-change" style={{ color: 'var(--text3)' }}>Active</div>
                     </div>
                   </div>
                   <div className="pm-list">
                     <div className="pm-list-item">
-                      <div className="pm-list-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#3DCC8E' }}>US</div>
+                      <div className="pm-list-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#3DCC8E' }}>Ag</div>
                       <div className="pm-list-info">
-                        <div className="pm-list-name">Acme Corp — New York</div>
-                        <div className="pm-list-sub">USD • Completed</div>
+                        <div className="pm-list-name">Fertilizer Management System</div>
+                        <div className="pm-list-sub">Completed • Live</div>
                       </div>
-                      <div className="pm-list-amt" style={{ color: 'var(--green)' }}>+$8,200</div>
+                      <div className="pm-list-amt" style={{ color: 'var(--green)' }}>✓</div>
                     </div>
                     <div className="pm-list-item">
-                      <div className="pm-list-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#5CE8A8' }}>DE</div>
+                      <div className="pm-list-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#5CE8A8' }}>Tr</div>
                       <div className="pm-list-info">
-                        <div className="pm-list-name">Berlin Studio GmbH</div>
-                        <div className="pm-list-sub">EUR • Processing</div>
+                        <div className="pm-list-name">Training Management System</div>
+                        <div className="pm-list-sub">Completed • Live</div>
                       </div>
-                      <div className="pm-list-amt" style={{ color: 'var(--text2)' }}>€3,400</div>
-                    </div>
-                    <div className="pm-list-item">
-                      <div className="pm-list-icon" style={{ background: 'rgba(61,204,142,.12)', color: '#3DCC8E' }}>JP</div>
-                      <div className="pm-list-info">
-                        <div className="pm-list-name">Tanaka Holdings</div>
-                        <div className="pm-list-sub">JPY • Completed</div>
-                      </div>
-                      <div className="pm-list-amt" style={{ color: 'var(--green)' }}>+¥840K</div>
+                      <div className="pm-list-amt" style={{ color: 'var(--green)' }}>✓</div>
                     </div>
                   </div>
                 </div>
 
-                {/* Panel 1: Analytics */}
+                {/* Panel 1: Training */}
                 <div className="panel-view" id="panel-1">
                   <div className="pm-row">
                     <div className="pm-card">
-                      <div className="pm-label">Revenue forecast</div>
-                      <div className="pm-val">$142K</div>
-                      <div className="pm-change" style={{ color: 'var(--green)' }}>Next 30 days</div>
+                      <div className="pm-label">Kids to Train</div>
+                      <div className="pm-val">1000+</div>
+                      <div className="pm-change" style={{ color: 'var(--green)' }}>5 Year Goal</div>
                     </div>
                     <div className="pm-card">
-                      <div className="pm-label">Anomalies</div>
-                      <div className="pm-val">0</div>
-                      <div className="pm-change" style={{ color: 'var(--text3)' }}>This week</div>
+                      <div className="pm-label">Programs</div>
+                      <div className="pm-val">3+</div>
+                      <div className="pm-change" style={{ color: 'var(--text3)' }}>Available</div>
                     </div>
                   </div>
                   <div className="pm-chart-mini">
-                    <div className="pm-label">Volume trend — 8 weeks</div>
+                    <div className="pm-label">Digital Literacy Impact</div>
                     <div className="pm-sparkline" id="sparkline"></div>
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '8px', padding: '10px 12px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                        <span style={{ fontSize: '12px', color: 'var(--text2)' }}>US revenue</span>
-                        <span style={{ fontSize: '12px', fontWeight: '600' }}>$84K</span>
-                      </div>
-                      <div className="pm-bar-wrap"><div className="pm-bar" style={{ width: '78%' }}></div></div>
-                    </div>
-                    <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '8px', padding: '10px 12px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                        <span style={{ fontSize: '12px', color: 'var(--text2)' }}>EU revenue</span>
-                        <span style={{ fontSize: '12px', fontWeight: '600' }}>$38K</span>
-                      </div>
-                      <div className="pm-bar-wrap"><div className="pm-bar" style={{ width: '42%', background: 'var(--sky2)' }}></div></div>
-                    </div>
                   </div>
                 </div>
 
-                {/* Panel 2: Multi-currency */}
+                {/* Panel 2: Consulting */}
                 <div className="panel-view" id="panel-2">
                   <div className="pm-row">
                     <div className="pm-card">
-                      <div className="pm-label">Active currencies</div>
-                      <div className="pm-val">8</div>
-                      <div className="pm-change" style={{ color: 'var(--text3)' }}>Of 35 available</div>
+                      <div className="pm-label">Consulting Projects</div>
+                      <div className="pm-val">5+</div>
+                      <div className="pm-change" style={{ color: 'var(--text3)' }}>Completed</div>
                     </div>
                     <div className="pm-card">
-                      <div className="pm-label">FX saved</div>
-                      <div className="pm-val">$1,840</div>
-                      <div className="pm-change" style={{ color: 'var(--green)' }}>This month</div>
-                    </div>
-                  </div>
-                  <div className="pm-list">
-                    <div className="pm-list-item">
-                      <div className="pm-list-icon" style={{ background: '#0A1830', fontSize: '14px' }}>🇺🇸</div>
-                      <div className="pm-list-info">
-                        <div className="pm-list-name">US Dollar</div>
-                        <div className="pm-list-sub">USD • Primary</div>
-                      </div>
-                      <div className="pm-list-amt">$48,200</div>
-                    </div>
-                    <div className="pm-list-item">
-                      <div className="pm-list-icon" style={{ background: '#0A1428', fontSize: '14px' }}>🇪🇺</div>
-                      <div className="pm-list-info">
-                        <div className="pm-list-name">Euro</div>
-                        <div className="pm-list-sub">EUR • 1 EUR = 1.084 USD</div>
-                      </div>
-                      <div className="pm-list-amt">€22,840</div>
-                    </div>
-                    <div className="pm-list-item">
-                      <div className="pm-list-icon" style={{ background: '#0E1820', fontSize: '14px' }}>🇬🇧</div>
-                      <div className="pm-list-info">
-                        <div className="pm-list-name">British Pound</div>
-                        <div className="pm-list-sub">GBP • 1 GBP = 1.262 USD</div>
-                      </div>
-                      <div className="pm-list-amt">£9,400</div>
+                      <div className="pm-label">Client Satisfaction</div>
+                      <div className="pm-val">100%</div>
+                      <div className="pm-change" style={{ color: 'var(--green)' }}>Goal</div>
                     </div>
                   </div>
                 </div>
 
-                {/* Panel 3: Security */}
+                {/* Panel 3: Values */}
                 <div className="panel-view" id="panel-3">
                   <div className="pm-security-grid">
                     <div className="pm-sec-item">
                       <svg className="pm-sec-icon" width="24" height="24" fill="none" stroke="#3DCC8E" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-                      <div className="pm-sec-name">SOC 2 Type II</div>
-                      <div className="pm-sec-desc">Annually audited by independent security firms</div>
-                      <div className="pm-sec-status">Certified 2025</div>
+                      <div className="pm-sec-name">Innovation</div>
+                      <div className="pm-sec-desc">Staying ahead through new ideas</div>
                     </div>
                     <div className="pm-sec-item">
-                      <svg className="pm-sec-icon" width="24" height="24" fill="none" stroke="#3DCC8E" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
-                      <div className="pm-sec-name">PCI DSS Level 1</div>
-                      <div className="pm-sec-desc">Highest level of payment security compliance</div>
-                      <div className="pm-sec-status">Compliant</div>
+                      <svg className="pm-sec-icon" width="24" height="24" fill="none" stroke="#4A9EE8" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+                      <div className="pm-sec-name">Quality</div>
+                      <div className="pm-sec-desc">Delivering excellence beyond expectations</div>
                     </div>
                     <div className="pm-sec-item">
-                      <svg className="pm-sec-icon" width="24" height="24" fill="none" stroke="#3DCC8E" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg>
-                      <div className="pm-sec-name">ISO 27001</div>
-                      <div className="pm-sec-desc">International standard for information security</div>
-                      <div className="pm-sec-status">Certified</div>
+                      <svg className="pm-sec-icon" width="24" height="24" fill="none" stroke="#8888F8" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg>
+                      <div className="pm-sec-name">Collaboration</div>
+                      <div className="pm-sec-desc">Partnering closely for tailored solutions</div>
                     </div>
                     <div className="pm-sec-item">
-                      <svg className="pm-sec-icon" width="24" height="24" fill="none" stroke="#3DCC8E" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
-                      <div className="pm-sec-name">AI fraud detection</div>
-                      <div className="pm-sec-desc">Blocks 99.97% of fraudulent transactions in real-time</div>
-                      <div className="pm-sec-status">Always on</div>
+                      <svg className="pm-sec-icon" width="24" height="24" fill="none" stroke="#F0A030" strokeWidth="1.5" strokeLinecap="round" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+                      <div className="pm-sec-name">Integrity</div>
+                      <div className="pm-sec-desc">Building trust with honesty</div>
                     </div>
                   </div>
                 </div>
@@ -487,33 +423,89 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* Why Choose Us */}
+      <section className="security-section" id="why-choose-us">
+        <div className="security-inner">
+          <div>
+            <div className="section-tag">Why Choose Us</div>
+            <h2 className="section-title">What Makes Us Different</h2>
+            <p className="section-sub" style={{ marginBottom: '24px' }}>Kukunet Digital is a software development company driving digital transformation in Ethiopia. We deliver cost-effective solutions, coding programs for children, and consulting services to promote digital literacy.</p>
+          </div>
+          <div className="security-badges">
+            <div className="sec-badge">
+              <div className="sec-badge-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg></div>
+              <div className="sec-badge-name">Proven Expertise</div>
+              <div className="sec-badge-desc">Delivering high-quality solutions</div>
+              <div className="sec-badge-status">Trusted</div>
+            </div>
+            <div className="sec-badge">
+              <div className="sec-badge-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg></div>
+              <div className="sec-badge-name">Social Impact</div>
+              <div className="sec-badge-desc">Training 1000+ kids in 5 years</div>
+              <div className="sec-badge-status">Goal</div>
+            </div>
+            <div className="sec-badge">
+              <div className="sec-badge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg></div>
+              <div className="sec-badge-name">Customer-Centric</div>
+              <div className="sec-badge-desc">Focused on your success</div>
+              <div className="sec-badge-status">Priority</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Data Digitalization */}
+      <section className="features-section" id="solutions">
+        <div className="features-header silk-reveal">
+          <div className="section-tag">Data Digitalization</div>
+          <h2 className="section-title">Transform Your Data</h2>
+          <p className="section-sub">Data in agriculture enhances productivity, reduces costs, and improves decision-making.</p>
+        </div>
+        <div style={{ padding: '0 max(48px, calc((100vw - var(--max-w)) / 2))', display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0,1fr))', gap: '24px' }}>
+          <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '24px' }}>
+            <h3 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '16px', color: 'var(--text)' }}>Types of Data</h3>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', color: 'var(--text2)' }}>
+              <li style={{ display: 'flex', gap: '8px' }}><span style={{ color: 'var(--green)', fontWeight: '700' }}>•</span> Structured Data — Predefined, easily searchable (databases, spreadsheets)</li>
+              <li style={{ display: 'flex', gap: '8px' }}><span style={{ color: 'var(--sky)', fontWeight: '700' }}>•</span> Semi-Structured Data — Partially organized (JSON, XML, emails)</li>
+              <li style={{ display: 'flex', gap: '8px' }}><span style={{ color: '#8888F8', fontWeight: '700' }}>•</span> Unstructured Data — No fixed format (text, images, videos)</li>
+            </ul>
+          </div>
+          <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: '12px', padding: '24px' }}>
+            <h3 style={{ fontSize: '20px', fontWeight: '700', marginBottom: '16px', color: 'var(--text)' }}>Benefits</h3>
+            <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0,1fr))', gap: '12px', color: 'var(--text2)' }}>
+              <li>• Higher Efficiency</li>
+              <li>• Cost Reduction</li>
+              <li>• Better Accuracy</li>
+              <li>• Improved Accessibility</li>
+              <li>• Enhanced Security</li>
+              <li>• Faster Decisions</li>
+              <li>• Scalability</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* Dashboard Preview */}
       <section className="dashboard-section" id="dashboard">
         <div className="dashboard-inner">
           <div style={{ textAlign: 'center' }}>
-            <div className="section-tag">Live platform</div>
-            <h2 className="section-title">Your command center</h2>
-            <p className="section-sub" style={{ maxWidth: '500px', margin: '0 auto' }}>Real-time data, beautiful visualizations, and the controls you need to stay ahead.</p>
+            <div className="section-tag">Our Systems</div>
+            <h2 className="section-title">Real-World Solutions</h2>
+            <p className="section-sub" style={{ maxWidth: '500px', margin: '0 auto' }}>Custom systems built for agriculture, investment, training, and more.</p>
           </div>
           <div className="dashboard-preview">
             <div className="dp-topbar">
-              <div className="dp-title">Portfolio overview</div>
+              <div className="dp-title">System Overview</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div className="dp-live"><div className="dp-live-dot"></div>Live data</div>
-                <div className="dp-chart-period">
-                  <button className="dp-period-btn active" onClick={(e) => (window as any).switchPeriod?.(e.currentTarget, '7d')}>7D</button>
-                  <button className="dp-period-btn" onClick={(e) => (window as any).switchPeriod?.(e.currentTarget, '1m')}>1M</button>
-                  <button className="dp-period-btn" onClick={(e) => (window as any).switchPeriod?.(e.currentTarget, '3m')}>3M</button>
-                  <button className="dp-period-btn" onClick={(e) => (window as any).switchPeriod?.(e.currentTarget, '1y')}>1Y</button>
-                </div>
+                <div className="dp-live"><div className="dp-live-dot"></div>Live</div>
               </div>
             </div>
             <div className="dp-body">
               <div className="dp-chart-area">
                 <div className="dp-chart-head">
                   <div>
-                    <div className="dp-chart-val" id="dpChartVal">$284,920</div>
-                    <div className="dp-chart-change" id="dpChartChange">▲ +$12,840 (4.72%) today</div>
+                    <div className="dp-chart-val" id="dpChartVal">10+</div>
+                    <div className="dp-chart-change" id="dpChartChange">Systems Completed</div>
                   </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-end', gap: '5px', height: '160px', paddingTop: '12px' }}>
@@ -537,38 +529,34 @@ export function LandingPage() {
               </div>
               <div className="dp-side">
                 <div className="dp-side-card">
-                  <div className="dp-side-label">Cash flow</div>
-                  <div className="dp-side-val" style={{ color: 'var(--green)' }}>+$31,400</div>
-                  <div className="dp-side-change" style={{ color: 'var(--green)' }}>Net positive this month</div>
+                  <div className="dp-side-label">Core Systems</div>
+                  <div className="dp-side-val" style={{ color: 'var(--green)' }}>5</div>
+                  <div className="dp-side-change" style={{ color: 'var(--green)' }}>Completed</div>
                   <div className="dp-allocations">
                     <div className="dp-alloc-row">
                       <div className="dp-alloc-dot" style={{ background: 'var(--sky)' }}></div>
-                      <div className="dp-alloc-name">Inbound</div>
-                      <div className="dp-alloc-bar-wrap"><div className="dp-alloc-bar" style={{ width: '78%', background: 'var(--sky)' }}></div></div>
-                      <div className="dp-alloc-pct">78%</div>
+                      <div className="dp-alloc-name">Fertilizer Mgmt</div>
+                      <div className="dp-alloc-bar-wrap"><div className="dp-alloc-bar" style={{ width: '100%', background: 'var(--sky)' }}></div></div>
                     </div>
                     <div className="dp-alloc-row">
                       <div className="dp-alloc-dot" style={{ background: '#8888F8' }}></div>
-                      <div className="dp-alloc-name">Outbound</div>
-                      <div className="dp-alloc-bar-wrap"><div className="dp-alloc-bar" style={{ width: '22%', background: '#8888F8' }}></div></div>
-                      <div className="dp-alloc-pct">22%</div>
+                      <div className="dp-alloc-name">AIISS</div>
+                      <div className="dp-alloc-bar-wrap"><div className="dp-alloc-bar" style={{ width: '100%', background: '#8888F8' }}></div></div>
                     </div>
                   </div>
                 </div>
                 <div className="dp-side-card">
-                  <div className="dp-side-label">Transactions</div>
-                  <div className="dp-side-val">1,248</div>
-                  <div className="dp-side-change" style={{ color: 'var(--text3)' }}>This month</div>
+                  <div className="dp-side-label">Supplementary</div>
+                  <div className="dp-side-val">5</div>
+                  <div className="dp-side-change" style={{ color: 'var(--text3)' }}>Systems</div>
                   <div className="dp-allocations" style={{ marginTop: '10px' }}>
                     <div className="dp-alloc-row">
                       <div className="dp-alloc-dot" style={{ background: 'var(--green)' }}></div>
-                      <div className="dp-alloc-name">Successful</div>
-                      <div className="dp-alloc-pct" style={{ color: 'var(--green)' }}>99.8%</div>
+                      <div className="dp-alloc-name">Training Mgmt</div>
                     </div>
                     <div className="dp-alloc-row">
-                      <div className="dp-alloc-dot" style={{ background: 'var(--red)' }}></div>
-                      <div className="dp-alloc-name">Failed</div>
-                      <div className="dp-alloc-pct" style={{ color: 'var(--red)' }}>0.2%</div>
+                      <div className="dp-alloc-dot" style={{ background: '#F0A030' }}></div>
+                      <div className="dp-alloc-name">Event Mgmt</div>
                     </div>
                   </div>
                 </div>
@@ -652,35 +640,34 @@ export function LandingPage() {
       <section className="security-section" id="security">
         <div className="security-inner">
           <div>
-            <div className="section-tag">Bank-grade protection</div>
-            <h2 className="section-title">Security is not a feature — it's the foundation</h2>
-            <p className="section-sub" style={{ marginBottom: '24px' }}>Every transaction is protected by multiple layers of enterprise-grade security. We're audited, certified, and monitored around the clock so you don't have to be.</p>
-            <a href="#" className="btn-outline" style={{ display: 'inline-block' }}>Read our security whitepaper</a>
+            <div className="section-tag">Your Data is Safe</div>
+            <h2 className="section-title">Enterprise-Grade Security</h2>
+            <p className="section-sub" style={{ marginBottom: '24px' }}>We use SSL/TLS encryption, role-based access control, 2FA, and protections against SQL injection, XSS, and DDoS attacks. We recommend adding multi-factor authentication and regular security audits.</p>
           </div>
           <div className="security-badges">
             <div className="sec-badge">
               <div className="sec-badge-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg></div>
-              <div className="sec-badge-name">SOC 2 Type II</div>
-              <div className="sec-badge-desc">Annually audited by independent security firms</div>
-              <div className="sec-badge-status">Certified 2025</div>
+              <div className="sec-badge-name">Encryption</div>
+              <div className="sec-badge-desc">SSL/TLS for secure data transmission</div>
+              <div className="sec-badge-status">Active</div>
             </div>
             <div className="sec-badge">
               <div className="sec-badge-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg></div>
-              <div className="sec-badge-name">PCI DSS Level 1</div>
-              <div className="sec-badge-desc">Highest level of payment security compliance</div>
-              <div className="sec-badge-status">Compliant</div>
+              <div className="sec-badge-name">Authentication</div>
+              <div className="sec-badge-desc">Role-based access and 2FA</div>
+              <div className="sec-badge-status">Enabled</div>
             </div>
             <div className="sec-badge">
               <div className="sec-badge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg></div>
-              <div className="sec-badge-name">ISO 27001</div>
-              <div className="sec-badge-desc">International standard for information security</div>
-              <div className="sec-badge-status">Certified</div>
+              <div className="sec-badge-name">Attack Protection</div>
+              <div className="sec-badge-desc">SQLi, XSS, and DDoS defense</div>
+              <div className="sec-badge-status">Active</div>
             </div>
             <div className="sec-badge">
               <div className="sec-badge-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg></div>
-              <div className="sec-badge-name">AI fraud detection</div>
-              <div className="sec-badge-desc">Blocks 99.97% of fraudulent transactions in real-time</div>
-              <div className="sec-badge-status">Always on</div>
+              <div className="sec-badge-name">Real-Time Sync</div>
+              <div className="sec-badge-desc">Your data is always up-to-date</div>
+              <div className="sec-badge-status">Live</div>
             </div>
           </div>
         </div>
@@ -689,8 +676,8 @@ export function LandingPage() {
       {/* Testimonials */}
       <section className="testimonials-section">
         <div style={{ textAlign: 'center' }}>
-          <div className="section-tag">What teams say</div>
-          <h2 className="section-title">Loved by finance teams</h2>
+          <div className="section-tag">What clients say</div>
+          <h2 className="section-title">Loved by businesses</h2>
         </div>
         <div className="testi-track-wrap">
           <div className="testi-track" id="testiTrack"></div>
@@ -707,9 +694,9 @@ export function LandingPage() {
       <section className="app-section">
         <div className="app-inner">
           <div>
-            <div className="section-tag">Mobile app</div>
-            <h2 className="section-title">Your finances, in your pocket</h2>
-            <p className="section-sub">Full dashboard access, instant transfer approvals, and real-time alerts — from anywhere in the world.</p>
+            <div className="section-tag">Mobile App</div>
+            <h2 className="section-title">Kukunet on the Go</h2>
+            <p className="section-sub">Access our training programs, track your projects, and stay connected — from anywhere in Ethiopia.</p>
             <div className="app-btns">
               <a href="#" className="app-store-btn">
                 <svg viewBox="0 0 24 24" width="26" height="26" fill="var(--text)" stroke="none"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.17.4-2.37 1.05-3.11z" /></svg>

@@ -1,0 +1,27 @@
+{
+  "name": "ku",
+  "version": "1.0.0",
+  "description": "KUKUNET Digital is a desktop-first full-stack web platform with a premium animated marketing landing page, secure authentication flow, and an authenticated user dashboard.",
+  "main": "extract-pdf.js",
+  "dependencies": {
+    "detect-libc": "^2.1.2",
+    "pdf-parse": "^1.1.1",
+    "semver": "^7.8.5",
+    "sharp": "^0.35.3",
+    "tslib": "^2.8.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dagim-hailu/kukunet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dagim-hailu/kukunet/issues"
+  },
+  "homepage": "https://github.com/dagim-hailu/kukunet#readme"
+}
