@@ -3,7 +3,7 @@ services:
     name: kukunet-api
     env: node
     plan: free
-    buildCommand: cd apps/api && npm install && npm run build
+    buildCommand: cd apps/api && NODE_ENV=development npm install && npm run build
     startCommand: cd apps/api && npm run start:prod
     rootDir: .
     envVars:
