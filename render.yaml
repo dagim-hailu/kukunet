@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: kukunet-api
+    env: node
+    plan: free
+    buildCommand: cd apps/api && npm install && npm run build
+    startCommand: cd apps/api && npm run start:prod
+    rootDir: .
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: kukunet-db
+          property: connectionString
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: JWT_ACCESS_TTL_SECONDS
+        value: 900
+      - key: JWT_REFRESH_TTL_SECONDS
+        value: 604800
+      - key: BCRYPT_SALT_ROUNDS
+        value: 12
+      - key: FRONTEND_URL
+        value: https://your-vercel-frontend-url.vercel.app
+
+databases:
+  - name: kukunet-db
+    databaseName: kukunet
+    user: kukunet
+    plan: free
