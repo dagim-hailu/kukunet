@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { BarChart3, BookOpen, Home, User } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const tabs = [
   { href: '/dashboard', label: 'Home', icon: Home, exact: true },
@@ -18,6 +19,15 @@ function isActive(pathname: string, href: string, exact: boolean): boolean {
 
 export function MobileBottomNav() {
   const pathname = usePathname();
+  const [clickedTab, setClickedTab] = useState<string | null>(null);
+
+  // Reset clicked animation after a short delay
+  useEffect(() => {
+    if (clickedTab) {
+      const timer = setTimeout(() => setClickedTab(null), 150);
+      return () => clearTimeout(timer);
+    }
+  }, [clickedTab]);
 
   return (
     <nav
@@ -27,16 +37,44 @@ export function MobileBottomNav() {
       <div className="flex justify-between items-center px-2">
         {tabs.map(({ href, label, icon: Icon, exact }) => {
           const active = isActive(pathname, href, exact);
+          const isClicked = clickedTab === href;
+
           return (
             <Link
               key={href}
               href={href}
-              className={`flex flex-col items-center gap-1 transition ${
-                active ? 'text-emerald-500' : 'text-neutral-500 hover:text-neutral-300'
+              onClick={() => setClickedTab(href)}
+              className={`flex flex-col items-center gap-1 transition-all duration-200 ease-out relative ${
+                active
+                  ? 'text-emerald-500'
+                  : 'text-neutral-500 hover:text-neutral-300'
               }`}
+              aria-current={active ? 'page' : undefined}
             >
-              <Icon className="w-5 h-5" strokeWidth={2} />
-              <span className="text-[10px] font-medium">{label}</span>
+              {/* Active tab background highlight */}
+              {active && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-1 bg-emerald-500 rounded-b-full" />
+              )}
+
+              <div
+                className={`transition-transform duration-150 ${
+                  isClicked ? 'scale-90' : 'scale-100'
+                }`}
+              >
+                <Icon
+                  className={`w-5 h-5 ${
+                    active ? 'stroke-[3px]' : 'stroke-[2px]'
+                  }`}
+                />
+              </div>
+
+              <span
+                className={`text-[10px] font-semibold transition-colors duration-150 ${
+                  active ? 'text-emerald-500' : 'text-neutral-500'
+                }`}
+              >
+                {label}
+              </span>
             </Link>
           );
         })}
