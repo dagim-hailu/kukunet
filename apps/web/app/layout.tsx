@@ -27,10 +27,24 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: '/icons/icon-16.png', type: 'image/png', sizes: '16x16' },
+      { url: '/icons/icon-32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/icons/icon-48.png', type: 'image/png', sizes: '48x48' },
+      { url: '/icons/icon-64.png', type: 'image/png', sizes: '64x64' },
+      { url: '/icons/icon-96.png', type: 'image/png', sizes: '96x96' },
+      { url: '/icons/icon-128.png', type: 'image/png', sizes: '128x128' },
       { url: '/icons/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icons/icon-256.png', type: 'image/png', sizes: '256x256' },
+      { url: '/icons/icon-384.png', type: 'image/png', sizes: '384x384' },
       { url: '/icons/icon-512.png', type: 'image/png', sizes: '512x512' },
     ],
-    apple: [{ url: '/icons/icon-192.png', type: 'image/png', sizes: '192x192' }],
+    apple: [
+      { url: '/icons/icon-128.png', type: 'image/png', sizes: '128x128' },
+      { url: '/icons/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icons/icon-256.png', type: 'image/png', sizes: '256x256' },
+      { url: '/icons/icon-384.png', type: 'image/png', sizes: '384x384' },
+      { url: '/icons/icon-512.png', type: 'image/png', sizes: '512x512' },
+    ],
   },
   formatDetection: {
     telephone: false,
