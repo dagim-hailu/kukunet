@@ -65,12 +65,15 @@ export class AuthService {
     });
     const tokens = await this.issueTokens(user, requestContext);
 
-    // Send registration confirmation email
-    await this.mailService.sendRegistrationConfirmation(
+    // Send registration confirmation email (fire and forget)
+    this.mailService.sendRegistrationConfirmation(
       user.email,
       user.name,
       user.selectedCourses,
-    );
+    ).catch((error) => {
+      // Just log it, don't fail the registration
+      console.error('Failed to send registration email:', error);
+    });
 
     return {
       user: this.toAuthUser(user),
