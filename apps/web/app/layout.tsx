@@ -26,8 +26,15 @@ export const metadata: Metadata = {
     title: 'KUKUNET Digital',
   },
   icons: {
-    icon: '/images/logo.jpg',
-    apple: '/images/logo.jpg',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+      { url: '/images/logo.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   formatDetection: {
     telephone: false,
@@ -54,7 +61,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="apple-touch-icon" href="/images/logo.jpg" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
