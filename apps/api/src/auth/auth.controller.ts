@@ -8,6 +8,7 @@ import {
   Post,
   Req,
   UseGuards,
+  Logger,
 } from '@nestjs/common';
 import type { Request } from 'express';
 import { CurrentUser } from '../common/decorators/current-user.decorator';
@@ -27,6 +28,7 @@ import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
+  private readonly logger = new Logger(AuthController.name);
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
@@ -34,10 +36,18 @@ export class AuthController {
     @Body() registerDto: RegisterDto,
     @Req() request: Request,
   ): Promise<AuthResponse> {
-    return this.authService.register(
-      registerDto,
-      this.getRequestContext(request),
-    );
+    this.logger.log("REGISTRATION_REQUEST_LOG: Starting registration for", registerDto.email);
+    try {
+      const result = await this.authService.register(
+        registerDto,
+        this.getRequestContext(request),
+      );
+      this.logger.log("REGISTRATION_SUCCESS_LOG: Registration successful for", registerDto.email);
+      return result;
+    } catch (error) {
+      this.logger.error("REGISTRATION_FAILURE_LOG:", error);
+      throw error;
+    }
   }
 
   @HttpCode(HttpStatus.OK)

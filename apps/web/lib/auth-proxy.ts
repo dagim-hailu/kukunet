@@ -107,34 +107,48 @@ export async function proxyAuthExchange(
   endpoint: string,
   body: unknown,
 ): Promise<NextResponse> {
-  const response = await fetch(`${getBackendBaseUrl()}${endpoint}`, {
-    method: 'POST',
-    headers: getForwardHeaders(request),
-    body: JSON.stringify(body),
-    cache: 'no-store',
-  });
+  const backendUrl = `${getBackendBaseUrl()}${endpoint}`;
+  console.log("PROXY_LOG: Forwarding to backend:", backendUrl);
+  
+  try {
+    const response = await fetch(backendUrl, {
+      method: 'POST',
+      headers: getForwardHeaders(request),
+      body: JSON.stringify(body),
+      cache: 'no-store',
+    });
 
-  if (!response.ok) {
-    return toErrorResponse(response);
-  }
+    console.log("PROXY_LOG: Backend response status:", response.status);
 
-  const payload = await parseJsonSafely<AuthResponse>(response);
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("PROXY_FAILURE_LOG: Backend error response:", errorText);
+      return toErrorResponse(response);
+    }
 
-  if (payload === null) {
-    return NextResponse.json(
-      { message: 'The authentication response was invalid.' },
-      { status: 502 },
+    const payload = await parseJsonSafely<AuthResponse>(response);
+
+    if (payload === null) {
+      console.error("PROXY_FAILURE_LOG: Invalid JSON response from backend");
+      return NextResponse.json(
+        { message: 'The authentication response was invalid.' },
+        { status: 502 },
+      );
+    }
+
+    const nextResponse = NextResponse.json(
+      {
+        user: payload.user,
+      },
+      { status: response.status },
     );
+    setAuthCookies(nextResponse, payload.tokens);
+    console.log("PROXY_LOG: Successfully completed auth exchange");
+    return nextResponse;
+  } catch (error) {
+    console.error("PROXY_FAILURE_LOG:", error);
+    throw error;
   }
-
-  const nextResponse = NextResponse.json(
-    {
-      user: payload.user,
-    },
-    { status: response.status },
-  );
-  setAuthCookies(nextResponse, payload.tokens);
-  return nextResponse;
 }
 
 async function refreshWithToken(
