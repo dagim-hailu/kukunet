@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kukunet-v2';
+const CACHE_NAME = 'kukunet-v3';
 const OFFLINE_URL = '/offline.html';
 
 const PRECACHE_URLS = [
@@ -7,6 +7,8 @@ const PRECACHE_URLS = [
   '/register',
   '/dashboard',
   '/manifest.json',
+  '/icon.png',
+  '/apple-icon.png',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
   '/offline.html',
