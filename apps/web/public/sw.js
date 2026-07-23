@@ -38,6 +38,11 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(request.url);
 
+  // Skip requests with unsupported schemes like chrome-extension
+  if (!['http:', 'https:'].includes(url.protocol)) {
+    return;
+  }
+
   if (url.pathname.startsWith('/api/')) {
     event.respondWith(
       fetch(request).catch(() =>

@@ -41,44 +41,49 @@ export class AuthService {
     registerDto: RegisterDto,
     requestContext: RequestContext,
   ): Promise<AuthResponse> {
-    if (registerDto.password !== registerDto.confirmPassword) {
-      throw new BadRequestException('Password confirmation does not match.');
+    try {
+      if (registerDto.password !== registerDto.confirmPassword) {
+        throw new BadRequestException('Password confirmation does not match.');
+      }
+
+      const email = this.normalizeEmail(registerDto.email);
+      const name = this.normalizeName(registerDto.name);
+      const existingUser = await this.usersRepository.findByEmail(email);
+
+      if (existingUser !== null) {
+        throw new ConflictException('An account with this email already exists.');
+      }
+
+      const passwordHash = await this.passwordHasherService.hashPassword(
+        registerDto.password,
+      );
+      const user = await this.usersRepository.create({
+        id: randomUUID(),
+        email,
+        name,
+        passwordHash,
+        selectedCourses: registerDto.selectedCourses,
+      });
+      const tokens = await this.issueTokens(user, requestContext);
+
+      // Send registration confirmation email (fire and forget)
+      this.mailService.sendRegistrationConfirmation(
+        user.email,
+        user.name,
+        user.selectedCourses,
+      ).catch((error) => {
+        // Just log it, don't fail the registration
+        console.error('Failed to send registration email:', error);
+      });
+
+      return {
+        user: this.toAuthUser(user),
+        tokens,
+      };
+    } catch (error) {
+      console.error('Registration error:', error);
+      throw error;
     }
-
-    const email = this.normalizeEmail(registerDto.email);
-    const name = this.normalizeName(registerDto.name);
-    const existingUser = await this.usersRepository.findByEmail(email);
-
-    if (existingUser !== null) {
-      throw new ConflictException('An account with this email already exists.');
-    }
-
-    const passwordHash = await this.passwordHasherService.hashPassword(
-      registerDto.password,
-    );
-    const user = await this.usersRepository.create({
-      id: randomUUID(),
-      email,
-      name,
-      passwordHash,
-      selectedCourses: registerDto.selectedCourses,
-    });
-    const tokens = await this.issueTokens(user, requestContext);
-
-    // Send registration confirmation email (fire and forget)
-    this.mailService.sendRegistrationConfirmation(
-      user.email,
-      user.name,
-      user.selectedCourses,
-    ).catch((error) => {
-      // Just log it, don't fail the registration
-      console.error('Failed to send registration email:', error);
-    });
-
-    return {
-      user: this.toAuthUser(user),
-      tokens,
-    };
   }
 
   async login(
