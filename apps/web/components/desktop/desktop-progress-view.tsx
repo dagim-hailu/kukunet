@@ -11,6 +11,7 @@ const courseProgressMap: Record<Course, { name: string; percent: number; color: 
   AI: { name: 'AI & Machine Learning', percent: 15, color: 'bg-amber-400' },
   WebDev: { name: 'Web Development', percent: 66, color: 'bg-emerald-400' },
   Graphics: { name: 'Graphics Design', percent: 40, color: 'bg-cyan-400' },
+  'Video Editing': { name: 'Video Editing & Production', percent: 30, color: 'bg-red-400' },
 };
 
 export function DesktopProgressView() {

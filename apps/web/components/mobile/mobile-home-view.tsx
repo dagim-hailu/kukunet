@@ -36,6 +36,7 @@ const courseMap: Record<Course, { name: string; rating: string; icon: any; bg: s
   AI: { name: 'AI & Machine Learning', rating: '9.2', icon: Terminal, bg: 'bg-amber-950/20', border: 'border-amber-900/20', hover: 'group-hover:bg-amber-950/30', color: 'text-amber-500' },
   WebDev: { name: 'Web Development', rating: '8.9', icon: Code2, bg: 'bg-emerald-950/30', border: 'border-emerald-900/20', hover: 'group-hover:bg-emerald-950/50', color: 'text-emerald-400' },
   Graphics: { name: 'Graphics Design', rating: '8.5', icon: Palette, bg: 'bg-cyan-950/30', border: 'border-cyan-900/20', hover: 'group-hover:bg-cyan-950/50', color: 'text-cyan-400' },
+  'Video Editing': { name: 'Video Editing & Production', rating: '9.0', icon: Video, bg: 'bg-red-950/30', border: 'border-red-900/20', hover: 'group-hover:bg-red-950/50', color: 'text-red-400' },
 };
 
 export function MobileHomeView() {

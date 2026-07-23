@@ -9,6 +9,7 @@ import { createHash, randomUUID, timingSafeEqual } from 'node:crypto';
 import { AppConfigService } from '../config/app-config.service';
 import { User } from '../database/schema';
 import { UsersRepository } from '../users/users.repository';
+import { MailService } from '../mail/mail.service';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import {
@@ -33,6 +34,7 @@ export class AuthService {
     private readonly passwordHasherService: PasswordHasherService,
     private readonly jwtService: JwtService,
     private readonly appConfigService: AppConfigService,
+    private readonly mailService: MailService,
   ) {}
 
   async register(
@@ -62,6 +64,13 @@ export class AuthService {
       selectedCourses: registerDto.selectedCourses,
     });
     const tokens = await this.issueTokens(user, requestContext);
+
+    // Send registration confirmation email
+    await this.mailService.sendRegistrationConfirmation(
+      user.email,
+      user.name,
+      user.selectedCourses,
+    );
 
     return {
       user: this.toAuthUser(user),

@@ -15,6 +15,7 @@ export enum Course {
   AI = 'AI',
   WebDev = 'WebDev',
   Graphics = 'Graphics',
+  VideoEditing = 'Video Editing',
 }
 
 export class RegisterDto {

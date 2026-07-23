@@ -29,7 +29,7 @@ const passwordRules = [
   'One special character',
 ];
 
-const AVAILABLE_COURSES: Course[] = ['Python', 'AI', 'WebDev', 'Graphics'];
+const AVAILABLE_COURSES: Course[] = ['Python', 'AI', 'WebDev', 'Graphics', 'Video Editing'];
 
 function validateEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

@@ -11,6 +11,7 @@ const COURSE_CARDS = [
   { id: 3, course: 'AI' as Course, category: 'AI & ML', categoryIcon: '🤖', title: 'AI & Machine\nLearning', lessons: 22, workshops: 8, gradient: 'linear-gradient(135deg,#7c3aed,#5b21b6)', emoji: '🧠', saved: true, status: 'active' as const, progress: 12 },
   { id: 4, course: 'Python' as Course, category: 'PROGRAMMING', categoryIcon: '🐍', title: 'Python\nProgramming', lessons: 20, workshops: 7, gradient: 'linear-gradient(135deg,#3730a3,#4f46e5)', emoji: '💻', saved: false, status: 'active' as const, progress: 45 },
   { id: 5, course: 'WebDev' as Course, category: 'BACKEND', categoryIcon: '🚀', title: 'Full Stack\nWeb Dev', lessons: 24, workshops: 8, gradient: 'linear-gradient(135deg,#0891b2,#06b6d4)', emoji: '🌐', saved: true, status: 'upcoming' as const, daysLeft: 5 },
+  { id: 6, course: 'Video Editing' as Course, category: 'MEDIA', categoryIcon: '🎬', title: 'Video Editing &\nProduction', lessons: 16, workshops: 5, gradient: 'linear-gradient(135deg,#ff6b6b,#ee5a24)', emoji: '🎥', saved: false, status: 'active' as const, progress: 22 },
 ];
 
 type CourseCard = (typeof COURSE_CARDS)[number];

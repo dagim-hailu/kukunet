@@ -9,6 +9,7 @@ import {
   FileText,
   Palette,
   Terminal,
+  Video,
 } from 'lucide-react';
 import { ThemeToggle } from '../theme-toggle';
 import { useDashboard } from '../../app/dashboard/layout';
@@ -62,6 +63,16 @@ const courseTrackMap: Record<Course, {
     iconColor: 'text-cyan-400',
     action: 'Start',
     actionClass: 'bg-cyan-600 hover:bg-cyan-500 text-white',
+    disabled: false,
+  },
+  'Video Editing': {
+    name: 'Video Editing & Production',
+    detail: 'Color grading next',
+    icon: Video,
+    iconBg: 'bg-red-950/40 border-red-900/20',
+    iconColor: 'text-red-400',
+    action: 'Start',
+    actionClass: 'bg-red-600 hover:bg-red-500 text-white',
     disabled: false,
   },
 };

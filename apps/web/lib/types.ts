@@ -1,4 +1,4 @@
-export type Course = 'Python' | 'AI' | 'WebDev' | 'Graphics';
+export type Course = 'Python' | 'AI' | 'WebDev' | 'Graphics' | 'Video Editing';
 
 export interface RegisterRequest {
   name: string;

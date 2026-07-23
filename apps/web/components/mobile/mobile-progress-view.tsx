@@ -25,6 +25,7 @@ const courseProgressMap: Record<Course, { name: string; percent: number; color: 
   AI: { name: 'AI & Machine Learning', percent: 15, color: 'bg-amber-500', textColor: 'text-amber-500', dimmed: false },
   WebDev: { name: 'Web Development', percent: 66, color: 'bg-emerald-500', textColor: 'text-emerald-400', dimmed: false },
   Graphics: { name: 'Graphics Design', percent: 40, color: 'bg-cyan-400', textColor: 'text-cyan-400', dimmed: false },
+  'Video Editing': { name: 'Video Editing & Production', percent: 30, color: 'bg-red-500', textColor: 'text-red-400', dimmed: false },
 };
 
 export function MobileProgressView() {

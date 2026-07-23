@@ -2,13 +2,14 @@ import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { eq } from 'drizzle-orm';
 import { DatabaseService } from '../database/database.service';
 import { users, type User } from '../database/schema';
+import { Course } from '../auth/dto/register.dto';
 
 interface CreateUserInput {
   id: string;
   email: string;
   name: string;
   passwordHash: string;
-  selectedCourses?: string[];
+  selectedCourses?: Course[];
 }
 
 @Injectable()

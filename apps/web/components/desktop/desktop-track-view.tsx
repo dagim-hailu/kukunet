@@ -9,6 +9,7 @@ const courseTrackMap: Record<Course, { name: string; detail: string; progress: n
   AI: { name: 'AI & Machine Learning', detail: '3/5 modules correct', progress: 15, status: 'Review' },
   WebDev: { name: 'Web Development', detail: '4 of 6 goals today', progress: 66, status: 'In progress' },
   Graphics: { name: 'Graphics Design', detail: 'Project due soon', progress: 40, status: 'In progress' },
+  'Video Editing': { name: 'Video Editing & Production', detail: 'Color grading next', progress: 30, status: 'In progress' },
 };
 
 export function DesktopTrackView() {

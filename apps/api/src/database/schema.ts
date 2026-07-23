@@ -9,6 +9,7 @@ import {
   uuid,
   varchar,
 } from 'drizzle-orm/pg-core';
+import { Course } from '../auth/dto/register.dto';
 
 export const users = pgTable(
   'users',
@@ -18,7 +19,7 @@ export const users = pgTable(
     passwordHash: varchar('password_hash', { length: 255 }).notNull(),
     name: varchar('name', { length: 120 }).notNull(),
     selectedCourses: jsonb('selected_courses')
-      .$type<string[]>()
+      .$type<Course[]>()
       .notNull()
       .default(sql`'[]'::jsonb`),
     profileData: jsonb('profile_data')

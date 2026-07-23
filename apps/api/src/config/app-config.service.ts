@@ -34,6 +34,30 @@ export class AppConfigService {
     return this.getPositiveInteger('BCRYPT_SALT_ROUNDS', 12);
   }
 
+  getSmtpHost(): string {
+    return this.getRequiredString('SMTP_HOST');
+  }
+
+  getSmtpPort(): number {
+    return this.getPositiveInteger('SMTP_PORT', 587);
+  }
+
+  getSmtpUser(): string {
+    return this.getRequiredString('SMTP_USER');
+  }
+
+  getSmtpPassword(): string {
+    return this.getRequiredString('SMTP_PASSWORD');
+  }
+
+  getSmtpFrom(): string {
+    return this.configService.get<string>('SMTP_FROM') || 'dagimhailu2@gmail.com';
+  }
+
+  getSmtpReplyTo(): string {
+    return this.configService.get<string>('SMTP_REPLY_TO') || 'dagimhailu2@gmail.com';
+  }
+
   private getRequiredString(key: string): string {
     const value = this.configService.get<string>(key);
 
