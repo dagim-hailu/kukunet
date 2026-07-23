@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { Logo } from './logo';
+import { RegistrationSuccessModal } from './registration-success-modal';
 import type { LoginRequest, RegisterRequest, Course } from '../lib/types';
 
 type AuthMode = 'login' | 'register';
@@ -50,12 +51,19 @@ export function AuthPage({ mode }: AuthPageProps) {
   const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // States for register.html interactive category selector
   const [chosenCategory, setChosenCategory] = useState<'kids' | 'adult' | null>(null);
   const [customFieldVal, setCustomFieldVal] = useState('');
 
   const isRegister = mode === 'register';
+
+  function handleProceedToDashboard() {
+    setShowSuccessModal(false);
+    router.push('/dashboard');
+    router.refresh();
+  }
 
   // SVG Icons helper matching Lucide exactly
   const ChevronLeftIcon = () => (
@@ -193,8 +201,12 @@ export function AuthPage({ mode }: AuthPageProps) {
         return;
       }
 
-      router.push('/dashboard');
-      router.refresh();
+      if (isRegister) {
+        setShowSuccessModal(true);
+      } else {
+        router.push('/dashboard');
+        router.refresh();
+      }
     } catch {
       setErrors({
         form: 'A network error interrupted the request. Please try again.',
@@ -472,6 +484,17 @@ export function AuthPage({ mode }: AuthPageProps) {
           </p>
         </div>
       </div>
+
+      {/* Registration Success Modal */}
+      <RegistrationSuccessModal
+        isOpen={showSuccessModal}
+        name={name}
+        email={email}
+        category={chosenCategory}
+        customDetail={customFieldVal}
+        selectedCourses={selectedCourses}
+        onProceed={handleProceedToDashboard}
+      />
     </main>
   );
 }
