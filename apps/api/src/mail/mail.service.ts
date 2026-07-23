@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
+import { AppConfigService } from '../config/app-config.service';
 import { Course } from '../auth/dto/register.dto';
 
 const COURSE_PRICE = 4500;
@@ -8,13 +9,23 @@ const COURSE_PRICE = 4500;
 export class MailService {
   private readonly logger = new Logger(MailService.name);
 
-  constructor(private readonly mailerService: MailerService) {}
+  constructor(
+    private readonly mailerService: MailerService,
+    private readonly appConfigService: AppConfigService,
+  ) {}
 
   async sendRegistrationConfirmation(
     email: string,
     name: string,
     selectedCourses: Course[],
   ): Promise<void> {
+    if (!this.appConfigService.isSmtpConfigured()) {
+      this.logger.log(
+        `SMTP not configured, skipping registration email to ${email}`,
+      );
+      return;
+    }
+
     try {
       const courseList = selectedCourses
         .map((course) => {

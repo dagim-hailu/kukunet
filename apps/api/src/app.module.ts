@@ -16,21 +16,34 @@ import { MailModule } from './mail/mail.module';
   imports: [
     ApplicationConfigModule,
     MailerModule.forRootAsync({
-      useFactory: (appConfigService: AppConfigService) => ({
-        transport: {
-          host: appConfigService.getSmtpHost(),
-          port: appConfigService.getSmtpPort(),
-          secure: appConfigService.getSmtpPort() === 465,
-          auth: {
-            user: appConfigService.getSmtpUser(),
-            pass: appConfigService.getSmtpPassword(),
+      useFactory: (appConfigService: AppConfigService) => {
+        if (appConfigService.isSmtpConfigured()) {
+          return {
+            transport: {
+              host: appConfigService.getSmtpHost() as string,
+              port: appConfigService.getSmtpPort(),
+              secure: appConfigService.getSmtpPort() === 465,
+              auth: {
+                user: appConfigService.getSmtpUser() as string,
+                pass: appConfigService.getSmtpPassword() as string,
+              },
+            },
+            defaults: {
+              from: `"Kukunet Digital" <${appConfigService.getSmtpFrom()}>`,
+              replyTo: appConfigService.getSmtpReplyTo(),
+            },
+          };
+        }
+        return {
+          transport: {
+            jsonTransport: true,
           },
-        },
-        defaults: {
-          from: `"Kukunet Digital" <${appConfigService.getSmtpFrom()}>`,
-          replyTo: appConfigService.getSmtpReplyTo(),
-        },
-      }),
+          defaults: {
+            from: `"Kukunet Digital" <${appConfigService.getSmtpFrom()}>`,
+            replyTo: appConfigService.getSmtpReplyTo(),
+          },
+        };
+      },
       inject: [AppConfigService],
     }),
     MailModule,

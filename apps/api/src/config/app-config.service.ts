@@ -34,20 +34,23 @@ export class AppConfigService {
     return this.getPositiveInteger('BCRYPT_SALT_ROUNDS', 12);
   }
 
-  getSmtpHost(): string {
-    return this.getRequiredString('SMTP_HOST');
+  getSmtpHost(): string | null {
+    const value = this.configService.get<string>('SMTP_HOST');
+    return value?.trim() ? value : null;
   }
 
   getSmtpPort(): number {
     return this.getPositiveInteger('SMTP_PORT', 587);
   }
 
-  getSmtpUser(): string {
-    return this.getRequiredString('SMTP_USER');
+  getSmtpUser(): string | null {
+    const value = this.configService.get<string>('SMTP_USER');
+    return value?.trim() ? value : null;
   }
 
-  getSmtpPassword(): string {
-    return this.getRequiredString('SMTP_PASSWORD');
+  getSmtpPassword(): string | null {
+    const value = this.configService.get<string>('SMTP_PASSWORD');
+    return value?.trim() ? value : null;
   }
 
   getSmtpFrom(): string {
@@ -56,6 +59,10 @@ export class AppConfigService {
 
   getSmtpReplyTo(): string {
     return this.configService.get<string>('SMTP_REPLY_TO') || 'dagimhailu2@gmail.com';
+  }
+
+  isSmtpConfigured(): boolean {
+    return this.getSmtpHost() !== null && this.getSmtpUser() !== null && this.getSmtpPassword() !== null;
   }
 
   private getRequiredString(key: string): string {
