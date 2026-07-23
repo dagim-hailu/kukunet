@@ -26,8 +26,8 @@ export const metadata: Metadata = {
     title: 'KUKUNET Digital',
   },
   icons: {
-    icon: '/images/logo.png',
-    apple: '/images/logo.png',
+    icon: '/images/logo.jpg',
+    apple: '/images/logo.jpg',
   },
   formatDetection: {
     telephone: false,
@@ -54,7 +54,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="apple-touch-icon" href="/images/logo.png" />
+        <link rel="apple-touch-icon" href="/images/logo.jpg" />
         <script
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
