@@ -2,6 +2,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { AppConfigService } from './config/app-config.service';
+import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
@@ -22,6 +23,8 @@ async function bootstrap(): Promise<void> {
       },
     }),
   );
+
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   const appConfigService = app.get(AppConfigService);
   await app.listen(appConfigService.getPort());
