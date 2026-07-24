@@ -8,6 +8,7 @@ import {
   IsArray,
   ArrayNotEmpty,
   IsIn,
+  IsOptional,
 } from 'class-validator';
 
 export enum Course {
@@ -46,4 +47,12 @@ export class RegisterDto {
   @ArrayNotEmpty({ message: 'Please select at least one course.' })
   @IsIn(Object.values(Course), { each: true, message: 'Invalid course selected.' })
   selectedCourses!: Course[];
+
+  @IsOptional()
+  @IsString()
+  chosenCategory?: string;
+
+  @IsOptional()
+  @IsString()
+  customFieldVal?: string;
 }

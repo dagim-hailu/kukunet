@@ -93,11 +93,23 @@ function getForwardHeaders(request: NextRequest): Headers {
   return headers;
 }
 
-async function toErrorResponse(response: Response): Promise<NextResponse> {
-  const payload = await parseJsonSafely<{ message?: string | string[] }>(response);
-  const message = Array.isArray(payload?.message)
-    ? payload?.message.join(' ')
-    : payload?.message || 'The request could not be completed.';
+async function toErrorResponse(
+  response: Response,
+  rawErrorText?: string,
+): Promise<NextResponse> {
+  let message = 'The request could not be completed.';
+  try {
+    const text =
+      rawErrorText !== undefined ? rawErrorText : await response.text();
+    const payload = JSON.parse(text) as { message?: string | string[] };
+    if (Array.isArray(payload?.message)) {
+      message = payload.message.join(' ');
+    } else if (typeof payload?.message === 'string') {
+      message = payload.message;
+    }
+  } catch {
+    // Keep default message if parsing fails
+  }
 
   return NextResponse.json({ message }, { status: response.status });
 }
@@ -123,7 +135,7 @@ export async function proxyAuthExchange(
     if (!response.ok) {
       const errorText = await response.text();
       console.error("PROXY_FAILURE_LOG: Backend error response:", errorText);
-      return toErrorResponse(response);
+      return toErrorResponse(response, errorText);
     }
 
     const payload = await parseJsonSafely<AuthResponse>(response);
