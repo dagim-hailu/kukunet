@@ -31,15 +31,17 @@ export async function POST(request: NextRequest) {
         : undefined;
 
       if (email) {
-        sendRegistrationEmail({
-          name,
-          email,
-          selectedCourses,
-          category,
-          customDetail,
-        }).catch((err) => {
-          console.error("REGISTRATION_EMAIL_ASYNC_ERROR:", err);
-        });
+        try {
+          await sendRegistrationEmail({
+            name,
+            email,
+            selectedCourses,
+            category,
+            customDetail,
+          });
+        } catch (err) {
+          console.error("REGISTRATION_EMAIL_IMMEDIATE_ERROR:", err);
+        }
       }
     }
 
