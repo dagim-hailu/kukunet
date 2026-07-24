@@ -54,11 +54,11 @@ export class AppConfigService {
   }
 
   getSmtpFrom(): string {
-    return this.configService.get<string>('SMTP_FROM') || 'dagimhailu2@gmail.com';
+    return this.configService.get<string>('SMTP_FROM') || 'daggimhailu@gmail.com';
   }
 
   getSmtpReplyTo(): string {
-    return this.configService.get<string>('SMTP_REPLY_TO') || 'dagimhailu2@gmail.com';
+    return this.configService.get<string>('SMTP_REPLY_TO') || 'daggimhailu@gmail.com';
   }
 
   isSmtpConfigured(): boolean {

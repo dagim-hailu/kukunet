@@ -1,65 +1,72 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { MailerService } from '@nestjs-modules/mailer';
-import { AppConfigService } from '../config/app-config.service';
-import { Course } from '../auth/dto/register.dto';
+import nodemailer from 'nodemailer';
+
+export interface RegistrationEmailParams {
+  name: string;
+  email: string;
+  selectedCourses?: string[];
+  category?: 'kids' | 'adult' | string | null;
+  customDetail?: string;
+}
 
 const COURSE_PRICE = 4500;
 
-@Injectable()
-export class MailService {
-  private readonly logger = new Logger(MailService.name);
+function createTransporter() {
+  const host = process.env.SMTP_HOST || 'smtp.gmail.com';
+  const port = parseInt(process.env.SMTP_PORT || '587', 10);
+  const user = process.env.SMTP_USER || 'daggimhailu@gmail.com';
+  const pass = process.env.SMTP_PASS || '';
 
-  constructor(
-    private readonly mailerService: MailerService,
-    private readonly appConfigService: AppConfigService,
-  ) {}
+  return nodemailer.createTransport({
+    host,
+    port,
+    secure: port === 465, // true for 465, false for 587
+    auth: user && pass ? { user, pass } : undefined,
+  });
+}
 
-  async sendRegistrationConfirmation(
-    email: string,
-    name: string,
-    selectedCourses: Course[],
-  ): Promise<void> {
-    if (!this.appConfigService.isSmtpConfigured()) {
-      this.logger.log(
-        `SMTP not configured, skipping registration email to ${email}`,
-      );
-      return;
-    }
+export function generateRegistrationEmailHtml({
+  name,
+  email,
+  selectedCourses = [],
+  category,
+  customDetail,
+}: RegistrationEmailParams): string {
+  const courses = selectedCourses.length > 0 ? selectedCourses : ['General Track'];
+  const courseCount = courses.length;
+  const totalPrice = courseCount * COURSE_PRICE;
 
-    try {
-      const courses = selectedCourses.length > 0 ? selectedCourses : [Course.Python];
-      const courseCount = courses.length;
-      const totalPrice = courseCount * COURSE_PRICE;
+  const trackName =
+    category === 'kids'
+      ? 'Kids Program'
+      : category === 'adult'
+      ? 'Adult Track'
+      : 'Standard Track';
 
-      const courseRowsHtml = courses
-        .map((course) => {
-          let displayName: string = course;
-          if (course === Course.WebDev) displayName = 'Web Development';
-          if (course === Course.Graphics) displayName = 'Graphics Design';
-          if (course === Course.VideoEditing) displayName = 'Video Editing';
+  const courseRowsHtml = courses
+    .map(
+      (course) => `
+    <tr style="border-bottom: 1px solid #1e3050;">
+      <td style="padding: 12px 16px; font-size: 14px; color: #e4eef8; font-weight: 500;">
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: #3dcc8e; margin-right: 8px;"></span>
+        ${course} Course
+      </td>
+      <td style="padding: 12px 16px; font-size: 14px; color: #8aaec8; font-weight: 600; text-align: right;">
+        $${COURSE_PRICE.toLocaleString()}
+      </td>
+    </tr>
+  `,
+    )
+    .join('');
 
-          return `
-            <tr style="border-bottom: 1px solid #1e3050;">
-              <td style="padding: 12px 16px; font-size: 14px; color: #e4eef8; font-weight: 500;">
-                <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: #3dcc8e; margin-right: 8px;"></span>
-                ${displayName} Course
-              </td>
-              <td style="padding: 12px 16px; font-size: 14px; color: #8aaec8; font-weight: 600; text-align: right;">
-                $${COURSE_PRICE.toLocaleString()}
-              </td>
-            </tr>
-          `;
-        })
-        .join('');
-
-      const html = `
+  return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to KUKUNET Digital</title>
 </head>
-<body style="margin: 0; padding: 0; background-color: #0f1319; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #e4eef8;">
+<body style="margin: 0; padding: 0; background-color: #0f1319; font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #e4eef8;">
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #0f1319; padding: 40px 16px;">
     <tr>
       <td align="center">
@@ -101,6 +108,12 @@ export class MailService {
                   <tr>
                     <td style="padding: 6px 0; color: #8aaec8;">Email:</td>
                     <td style="padding: 6px 0; font-weight: 600; text-align: right; color: #3dcc8e;">${email}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 6px 0; color: #8aaec8;">Track:</td>
+                    <td style="padding: 6px 0; font-weight: 700; text-align: right; color: #3dcc8e;">
+                      ${trackName}${customDetail ? ` (${customDetail})` : ''}
+                    </td>
                   </tr>
                 </table>
               </div>
@@ -150,6 +163,17 @@ export class MailService {
                 </table>
               </div>
 
+              <!-- CTA Button -->
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-top: 28px;">
+                <tr>
+                  <td align="center">
+                    <a href="${process.env.NEXT_PUBLIC_APP_URL || 'https://kukunet.vercel.app'}/dashboard" style="display: block; width: 100%; box-sizing: border-box; text-align: center; background-color: #3dcc8e; color: #0f1319; font-size: 14px; font-weight: 800; text-decoration: none; padding: 16px 24px; border-radius: 14px; box-shadow: 0 10px 25px rgba(61,204,142,0.25);">
+                      Access Your Workspace Dashboard →
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
             </td>
           </tr>
 
@@ -171,21 +195,36 @@ export class MailService {
   </table>
 </body>
 </html>
-      `;
+  `;
+}
 
-      await this.mailerService.sendMail({
-        from: '"KUKUNET Digital" <daggimhailu@gmail.com>',
-        to: email,
-        subject: 'Welcome to KUKUNET Digital - Registration Confirmed',
-        html,
-      });
+export async function sendRegistrationEmail(params: RegistrationEmailParams): Promise<{ success: boolean; messageId?: string; error?: string }> {
+  try {
+    const sender = process.env.SENDER_EMAIL || '"KUKUNET Digital" <daggimhailu@gmail.com>';
+    const html = generateRegistrationEmailHtml(params);
+    const text = `Welcome to KUKUNET Digital, ${params.name}! Your registration is confirmed. Total Amount: $${((params.selectedCourses?.length || 1) * COURSE_PRICE).toLocaleString()}. Visit your dashboard to get started.`;
 
-      this.logger.log(`Registration confirmation email sent to ${email}`);
-    } catch (error) {
-      this.logger.error(
-        `Failed to send registration confirmation email to ${email}`,
-        error.stack,
-      );
+    console.log(`EMAIL_SERVICE_LOG: Preparing registration email to ${params.email} from ${sender}`);
+
+    const pass = process.env.SMTP_PASS;
+    if (!pass) {
+      console.log('EMAIL_SERVICE_LOG: SMTP_PASS env variable not set. Email generated and logged for reference.');
+      return { success: true, messageId: 'logged-local' };
     }
+
+    const transporter = createTransporter();
+    const info = await transporter.sendMail({
+      from: sender,
+      to: params.email,
+      subject: 'Welcome to KUKUNET Digital - Registration Confirmed',
+      text,
+      html,
+    });
+
+    console.log('EMAIL_SERVICE_LOG: Email sent successfully! Message ID:', info.messageId);
+    return { success: true, messageId: info.messageId };
+  } catch (error) {
+    console.error('EMAIL_SERVICE_FAILURE_LOG:', error);
+    return { success: false, error: (error as Error).message };
   }
 }

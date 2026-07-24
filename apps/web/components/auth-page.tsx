@@ -168,13 +168,15 @@ export function AuthPage({ mode }: AuthPageProps) {
     setIsSubmitting(true);
 
     try {
-      const body: LoginRequest | RegisterRequest = isRegister
+      const body: (LoginRequest | RegisterRequest) & { chosenCategory?: string; customFieldVal?: string } = isRegister
         ? {
             name: name.trim(),
             email: email.trim(),
             password,
             confirmPassword,
             selectedCourses,
+            chosenCategory: chosenCategory || undefined,
+            customFieldVal: customFieldVal || undefined,
           }
         : {
             email: email.trim(),
