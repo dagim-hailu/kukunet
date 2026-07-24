@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { Logo } from './logo';
 import { RegistrationSuccessModal } from './registration-success-modal';
+import { EmailSnackbar } from './email-snackbar';
 import type { LoginRequest, RegisterRequest, Course } from '../lib/types';
 
 type AuthMode = 'login' | 'register';
@@ -496,6 +497,12 @@ export function AuthPage({ mode }: AuthPageProps) {
         customDetail={customFieldVal}
         selectedCourses={selectedCourses}
         onProceed={handleProceedToDashboard}
+      />
+
+      {/* Email Dispatch Snackbar Notification */}
+      <EmailSnackbar
+        isVisible={showSuccessModal}
+        email={email}
       />
     </main>
   );

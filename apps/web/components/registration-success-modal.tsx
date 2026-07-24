@@ -85,6 +85,15 @@ export function RegistrationSuccessModal({
           <p className="text-xs text-[var(--text-2)] mt-1">
             Your account has been successfully created.
           </p>
+
+          {/* Email Sent Banner Notification */}
+          <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-medium animate-pulse">
+            <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <span>Confirmation email sent to <strong>{email}</strong></span>
+          </div>
         </div>
 
         {/* Basic User Information Card */}
